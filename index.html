@@ -32,110 +32,13 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">SPARK: Sim-ready Part-level Articulated Reconstruction with VLM Knowledge</h1>
+            <h1 class="title is-1 publication-title">SeeClear: Reliable Transparent Object Depth Estimation via Generative Opacification</h1>
 
             <!-- Authors -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://heyumeng.com/">Yumeng He</a><sup>1,2*</sup>,
+                Anonymous
               </span>
-              <span class="author-block">
-                <a href="https://yingjiang96.github.io/">Ying Jiang</a><sup>1*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://jlu227.wixsite.com/kay-lu">Jiayin Lu</a><sup>1*</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://yangzzzy.github.io/">Yin Yang</a><sup>3</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://www.math.ucla.edu/~cffjiang/">Chenfanfu Jiang</a><sup>1</sup>
-              </span>
-            </div>
-
-            <!-- Affiliations -->
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>University of California, Los Angeles</span> &nbsp;
-              <span class="author-block"><sup>2</sup>University of Southern California</span> &nbsp;
-              <span class="author-block"><sup>3</sup>University of Utah</span>
-            </div>
-
-            <!-- Emails -->
-            <!-- <div class="is-size-5 publication-authors">
-              <span class="author-block">✉️: <a href="mailto:"></a></span>
-            </div> -->
-
-            <!-- Author Notes -->
-            <div class="is-size-6 publication-authors">
-              <span class="author-block"><i>* equal contributions</i></span>
-            </div>
-
-            <!-- <div class="is-size-5 publication-info">
-              <b></b>
-            </div> -->
-
-            <!-- Links -->
-            <div class="column has-text-centered">
-              <div class="publication-links">
-
-                <!-- OpenReview Link -->
-                <!-- <span class="link-block">
-                  <a href="https://openreview.net/forum?id="
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-alt"></i></span>
-                    <span>OpenReview</span>
-                  </a>
-                </span> &nbsp; -->
-                <!-- ArXiv Link -->
-
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/2512.01629" 
-                    class="external-link button is-normal is-rounded is-dark"
-                    target="_blank" rel="noopener noreferrer">
-                    <span class="icon"><i class="ai ai-arxiv"></i></span>
-                    <span>arXiv</span>
-                  </a>
-                </span> &nbsp;
-
-                <!-- Code Link -->
-                <span class="link-block">
-                  <a href="https://github.com/YumengHe/SPARK"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code</span>
-                  </a>
-                </span> &nbsp;
-
-                <!-- Video Link -->
-                <!-- <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=ZaZHbkkPtXY"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i> 
-                  </span>
-                  <span>Video</span>
-                </a>
-                </span> &nbsp; -->
-
-                <!-- Model Link -->
-                <!-- <span class="link-block">
-                  <a href="https://huggingface.co/wgsxm/PartCrafter"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-database"></i></span>
-                    <span>Model</span>
-                  </a>
-                </span> &nbsp; -->
-
-                <!-- Demo Link -->
-                <!-- <span class="link-block">
-                  <a href="https://huggingface.co/spaces/alexnasa/PartCrafter"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-magic"></i></span>
-                    <span>Demo</span>
-                  </a>
-                </span> -->
-
-              </div>
             </div>
           </div>
         </div>
@@ -150,9 +53,9 @@
         <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
           <source src="./static/videos/teaser.mp4" type="video/mp4">
         </video> -->
-        <img src="./static/images/SPARK_teaser.png" class="interpolation-image" />
+        <img src="./static/images/teaser.png" class="interpolation-image" />
         <h2 class="subtitle has-text-centered">
-          <strong>SPARK</strong> is a novel framework that integrates VLM-guided part-level and global image guidance with diffusion transformers to produce high-quality articulated object reconstructions.
+          <strong>SeeClear</strong> is a novel framework that converts transparent objects into generative opaque images, predicting stable and accurate depth for transparent objects.
         </h2>
       </div>
     </div>
@@ -196,12 +99,13 @@
           <h2 class="title is-3">✨ Abstract ✨</h2>
           <div class="content has-text-justified">
             <p>
-              Articulated 3D objects are critical for embodied AI, robotics, and interactive scene understanding, yet creating simulation-ready assets remains labor-intensive and requires expert modeling of part hierarchies and motion structures. 
-              We introduce <strong>SPARK</strong>, a framework for reconstructing physically consistent, kinematic part-level articulated objects from a single RGB image. 
-              Given an input image, we first leverage VLMs to extract coarse URDF parameters and generate part-level reference images. 
-              We then integrate the part-image guidance and the inferred structure graph into a generative diffusion transformer to synthesize consistent part and complete shapes of articulated objects. 
-              To further refine the URDF parameters, we incorporate differentiable forward kinematics and differentiable rendering to optimize joint types, axes, and origins under VLM-generated open-state supervision. 
-              Extensive experiments show that <strong>SPARK</strong> produces high-quality, simulation-ready articulated assets across diverse categories, enabling downstream applications such as robotic manipulation and interaction modeling. 
+              Monocular depth estimation remains challenging for transparent objects, where refraction and transmission are difficult to model and break the appearance assumptions used by depth networks. 
+              As a result, state-of-the-art estimators often produce unstable or incorrect depth predictions for transparent materials. 
+              We propose <strong>SeeClear</strong>, a novel framework that converts transparent objects into generative opaque images, enabling stable monocular depth estimation for transparent objects. 
+              Given an input image, we first localize transparent regions and transform their refractive appearance into geometrically consistent opaque shapes using a diffusion-based generative opacification module. 
+              The processed image is then fed into an off-the-shelf monocular depth estimator without retraining or architectural changes. 
+              To train the opacification model, we construct <strong>SeeClear-396k</strong>, a synthetic dataset containing 396k paired transparent-opaque renderings. 
+              Experiments on both synthetic and real-world datasets show that <strong>SeeClear</strong> significantly improves depth estimation for transparent objects.
             </p>
           </div>
         </div>
@@ -217,295 +121,487 @@
           </div>
         </div>
       </div>
-      <!--/ Paper video. -->
     </div>
   </section>
 
-  <section class="section pipeline-section">
-    <h2 class="title is-3" style="text-align: center;">🎯 Pipeline 🎯</h2>
-    <img src="./static/images/SPARK_pipeline.png" class="interpolation-image" />
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">🎯 Pipeline 🎯</h2>
+          <img src="./static/images/pipeline.png" class="interpolation-image" />
+          <div class="content has-text-justified">
+            <p>
+              Starting from an image, we first apply a segmentation model to obtain the transparent object mask.
+              Guided by the mask and the image, a latent diffusion model generates an opacified image of the transparent object.
+              A mask refinement module then predicts a soft blending mask to alpha-composite the generated opaque region with the original background, producing the final composited image.
+              The composited image is finally fed into a depth model to estimate accurate depth.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">♣️ In The Wild Results ♣️</h2>
+
+        <div id="with-video-section">
+            <div id="video-items"></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="section">
+    <div class="container">
+        <h2 class="title is-3" style="text-align: center;">♠️ Comparison ♠️</h2>
+
+        <div class="comparison-grid">
+            <!-- Header Row -->
+            <div class="comparison-header">
+                <div class="comparison-header-label">Input</div>
+                <div class="comparison-header-label">Ground Truth</div>
+                <div class="comparison-header-label">Depth4ToM</div>
+                <div class="comparison-header-label">MODEST</div>
+                <div class="comparison-header-label">D4RD</div>
+                <div class="comparison-header-label">Ours</div>
+            </div>
+
+            <!-- Row 1: Charing Cross Bridge 02 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_original-18483.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_final-18486.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_learntopaint-18489.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_stylizedneuralpainting-18492.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_painttransformer-18495.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18498.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 2: Still Life -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_original-18626.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18611.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_learntopaint-18623.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_stylizedneuralpainting-18620.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_painttransformer-18617.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18614.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 3: Flower Garden And Bungalow Bermuda -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_original-18593.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_final-18596.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_learntopaint-18599.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_stylizedneuralpainting-18602.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_painttransformer-18605.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18608.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 4: Girl On A Swing -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_original-18590.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18575.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_learntopaint-18578.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_stylizedneuralpainting-18581.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_painttransformer-18584.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18587.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 5: Painting After Shitao -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/00_original-18537.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18540.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_learntopaint-18543.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_painttransformer-18546.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_stylizedneuralpainting-18549.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/pasted-movie-18552.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 6: Digital 32 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_original-18534.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18519.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_learntopaint-18522.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_stylizedneuralpainting-18525.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_painttransformer-18528.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18531.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 7: Digital 17 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/00_original-18501.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18507.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_learntopaint-18510.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_stylizedneuralpainting-18513.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_painttransformer-18516.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18504.png" alt="O&R">
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="video-comparison-section">
+    <h2 class="title is-3" style="text-align: center;">♠️ Qualitative Comparison on Shape Reconstruction ♠️</h2>
     <p>
-      We use a VLM to generate per-part reference images, predicted open-state images, and URDF templates with preliminary joint and link estimations.
-      A Diffusion Transformer (DiT) equipped with local, global, and hierarchical attention mechanisms simultaneously synthesizes part-level and complete articulated meshes from a single image with VLM priors.
-      We further employ a generative texture model to generate realistic textures and refine the URDF parameters using differentiable forward kinematics and differentiable rendering under the guidance of the predicted open-state images.
+      We compare our results with OmniPart, PartCrafter, and URDFormer.
+      Our method fulfills accurate, high-fidelity articulated object shape reconstruction.
     </p>
+      <h3>Microwave</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/7221_microwave/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/7221_microwave/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/7221_microwave/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item" >
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/7221_microwave/OmniPart.gif" class="comparison-image" />
+      </div>
+          <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/7221_microwave/PartCrafter.gif" class="comparison-image" />
+          </div>
+      <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/7221_microwave/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
+
+    <h3>Refrigerator</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/10900_fridge/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/10900_fridge/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/10900_fridge/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item">
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/10900_fridge/OmniPart.gif" class="comparison-image" />
+      </div>
+      <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/10900_fridge/PartCrafter.gif" class="comparison-image" />
+          </div>
+          <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/10900_fridge/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
+
+    <h3>Table</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/25913_desk/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/25913_desk/GT2.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/25913_desk/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item">
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/25913_desk/OmniPart.gif" class="comparison-image" />
+      </div>
+          <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/25913_desk/PartCrafter.gif" class="comparison-image" />
+          </div>
+      <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/25913_desk/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
+
+    <h3>Storage Furniture</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/35059_drawer/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/35059_drawer/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/35059_drawer/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item">
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/35059_drawer/OmniPart.gif" class="comparison-image" />
+      </div>
+          <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/35059_drawer/PartCrafter.gif" class="comparison-image" />
+          </div>
+      <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/35059_drawer/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
+
+    <h3>Safe</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/102301_safe/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/102301_safe/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/102301_safe/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item">
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/102301_safe/OmniPart.gif" class="comparison-image" />
+      </div>
+          <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/102301_safe/PartCrafter.gif" class="comparison-image" />
+          </div>
+      <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/102301_safe/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
+
+    <h3>Washing Machine</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/mesh/103521_washer/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/mesh/103521_washer/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/mesh/103521_washer/SPARK.gif" class="comparison-image" />
+          </div>
+      <div class="video-item">
+        <h4>OmniPart</h4>
+        <img src="./static/mesh/103521_washer/OmniPart.gif" class="comparison-image" />
+      </div>
+          <div class="video-item">
+              <h4>PartCrafter</h4>
+              <img src="./static/mesh/103521_washer/PartCrafter.gif" class="comparison-image" />
+          </div>
+      <div class="video-item ">
+              <h4>URDFormer</h4>
+              <img src="./static/mesh/103521_washer/URDFormer.gif" class="comparison-image" />
+          </div>
+      </div>
   </section>
 
-<section class="video-comparison-section">
-	<h2 class="title is-3" style="text-align: center;">♠️ Qualitative Comparison on Shape Reconstruction ♠️</h2>
-	<p>
-		We compare our results with OmniPart, PartCrafter, and URDFormer.
-		Our method fulfills accurate, high-fidelity articulated object shape reconstruction.
-	</p>
-    <h3>Microwave</h3>
+  <section class="video-comparison-section">
+    <h2 class="title is-3" ">♣️ Qualitative Comparison on URDF Estimation ♣️</h2>
+    <p>
+      We compare our results with Articulate-Anything, Articulate-AnyMesh.
+      The closed-state results are reconstructed or retrieved meshes, while the open-state configurations are obtained through kinematic transformations using the estimated URDF parameters.
+      Our method achieves more accurate and physically consistent URDF estimation, leading to realistic articulation behavior.
+    </p>
+      <h3>Microwave</h3>
+      <div class="video-container">
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/URDF/7236_microwave/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/URDF/7236_microwave/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/URDF/7236_microwave/SPARK_blender.gif" class="comparison-image" />
+          </div>
+      <div class="video-item" >
+        <h4>Articulate-Anything</h4>
+        <img src="./static/URDF/7236_microwave/Anything.gif" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Articulate AnyMesh</h4>
+              <img src="./static/URDF/7236_microwave/AnyMesh.gif" class="comparison-image" />
+          </div>
+      </div>
+    <h3>Refrigerator</h3>
     <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/7221_microwave/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/7221_microwave/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/7221_microwave/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item" >
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/7221_microwave/OmniPart.gif" class="comparison-image" />
-		</div>
-        <div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/7221_microwave/PartCrafter.gif" class="comparison-image" />
-        </div>
-		<div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/7221_microwave/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-
-	<h3>Refrigerator</h3>
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/URDF/10627_refrigerator/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/URDF/10627_refrigerator/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/URDF/10627_refrigerator/SPARK_blender.gif" class="comparison-image" />
+          </div>
+      <div class="video-item" >
+        <h4>Articulate-Anything</h4>
+        <img src="./static/URDF/10627_refrigerator/Anything.gif" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Articulate AnyMesh</h4>
+              <img src="./static/URDF/10627_refrigerator/AnyMesh.gif" class="comparison-image" />
+          </div>
+      </div>
+    <h3>Table</h3>
     <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/10900_fridge/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/10900_fridge/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/10900_fridge/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item">
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/10900_fridge/OmniPart.gif" class="comparison-image" />
-		</div>
-		<div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/10900_fridge/PartCrafter.gif" class="comparison-image" />
-        </div>
-        <div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/10900_fridge/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-
-	<h3>Table</h3>
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/URDF/20411_table/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/URDF/20411_table/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/URDF/20411_table/SPARK_blender.gif" class="comparison-image" />
+          </div>
+      <div class="video-item" >
+        <h4>Articulate-Anything</h4>
+        <img src="./static/URDF/20411_table/Anything.gif" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Articulate AnyMesh</h4>
+              <img src="./static/URDF/20411_table/AnyMesh.gif" class="comparison-image" />
+          </div>
+      </div>
+    <h3>Storage Furniture</h3>
     <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/25913_desk/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/25913_desk/GT2.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/25913_desk/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item">
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/25913_desk/OmniPart.gif" class="comparison-image" />
-		</div>
-        <div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/25913_desk/PartCrafter.gif" class="comparison-image" />
-        </div>
-		<div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/25913_desk/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-
-	<h3>Storage Furniture</h3>
-    <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/35059_drawer/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/35059_drawer/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/35059_drawer/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item">
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/35059_drawer/OmniPart.gif" class="comparison-image" />
-		</div>
-        <div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/35059_drawer/PartCrafter.gif" class="comparison-image" />
-        </div>
-		<div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/35059_drawer/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-
-	<h3>Safe</h3>
-    <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/102301_safe/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/102301_safe/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/102301_safe/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item">
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/102301_safe/OmniPart.gif" class="comparison-image" />
-		</div>
-        <div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/102301_safe/PartCrafter.gif" class="comparison-image" />
-        </div>
-		<div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/102301_safe/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-
-	<h3>Washing Machine</h3>
-    <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/mesh/103521_washer/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/mesh/103521_washer/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/mesh/103521_washer/SPARK.gif" class="comparison-image" />
-        </div>
-		<div class="video-item">
-			<h4>OmniPart</h4>
-			<img src="./static/mesh/103521_washer/OmniPart.gif" class="comparison-image" />
-		</div>
-        <div class="video-item">
-            <h4>PartCrafter</h4>
-            <img src="./static/mesh/103521_washer/PartCrafter.gif" class="comparison-image" />
-        </div>
-		<div class="video-item ">
-            <h4>URDFormer</h4>
-            <img src="./static/mesh/103521_washer/URDFormer.gif" class="comparison-image" />
-        </div>
-    </div>
-</section>
-
-<section class="video-comparison-section">
-	<h2 class="title is-3" style="text-align: center;">♣️ Qualitative Comparison on URDF Estimation ♣️</h2>
-	<p>
-		We compare our results with Articulate-Anything, Articulate-AnyMesh.
-		The closed-state results are reconstructed or retrieved meshes, while the open-state configurations are obtained through kinematic transformations using the estimated URDF parameters.
-		Our method achieves more accurate and physically consistent URDF estimation, leading to realistic articulation behavior.
-	</p>
-    <h3>Microwave</h3>
-    <div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/URDF/7236_microwave/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/URDF/7236_microwave/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/URDF/7236_microwave/SPARK_blender.gif" class="comparison-image" />
-        </div>
-		<div class="video-item" >
-			<h4>Articulate-Anything</h4>
-			<img src="./static/URDF/7236_microwave/Anything.gif" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Articulate AnyMesh</h4>
-            <img src="./static/URDF/7236_microwave/AnyMesh.gif" class="comparison-image" />
-        </div>
-    </div>
-	<h3>Refrigerator</h3>
-	<div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/URDF/10627_refrigerator/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/URDF/10627_refrigerator/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/URDF/10627_refrigerator/SPARK_blender.gif" class="comparison-image" />
-        </div>
-		<div class="video-item" >
-			<h4>Articulate-Anything</h4>
-			<img src="./static/URDF/10627_refrigerator/Anything.gif" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Articulate AnyMesh</h4>
-            <img src="./static/URDF/10627_refrigerator/AnyMesh.gif" class="comparison-image" />
-        </div>
-    </div>
-	<h3>Table</h3>
-	<div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/URDF/20411_table/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/URDF/20411_table/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/URDF/20411_table/SPARK_blender.gif" class="comparison-image" />
-        </div>
-		<div class="video-item" >
-			<h4>Articulate-Anything</h4>
-			<img src="./static/URDF/20411_table/Anything.gif" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Articulate AnyMesh</h4>
-            <img src="./static/URDF/20411_table/AnyMesh.gif" class="comparison-image" />
-        </div>
-    </div>
-	<h3>Storage Furniture</h3>
-	<div class="video-container">
-        <div class="video-item">
-			<h4>Input Image</h4>
-			<img src="./static/URDF/44817_storagefurniture/input_image.png" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Ground Truth</h4>
-            <img src="./static/URDF/44817_storagefurniture/GT.gif" class="comparison-image" />
-        </div>
-        <div class="video-item emphasized">
-            <h4>Ours</h4>
-            <img src="./static/URDF/44817_storagefurniture/SPARK_blender.gif" class="comparison-image" />
-        </div>
-		<div class="video-item" >
-			<h4>Articulate-Anything</h4>
-			<img src="./static/URDF/44817_storagefurniture/Anything.gif" class="comparison-image" />
-		</div>
-        <div class="video-item ">
-            <h4>Articulate AnyMesh</h4>
-            <img src="./static/URDF/44817_storagefurniture/AnyMesh.gif" class="comparison-image" />
-        </div>
-    </div>
-</section>
+          <div class="video-item">
+        <h4>Input Image</h4>
+        <img src="./static/URDF/44817_storagefurniture/input_image.png" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Ground Truth</h4>
+              <img src="./static/URDF/44817_storagefurniture/GT.gif" class="comparison-image" />
+          </div>
+          <div class="video-item emphasized">
+              <h4>Ours</h4>
+              <img src="./static/URDF/44817_storagefurniture/SPARK_blender.gif" class="comparison-image" />
+          </div>
+      <div class="video-item" >
+        <h4>Articulate-Anything</h4>
+        <img src="./static/URDF/44817_storagefurniture/Anything.gif" class="comparison-image" />
+      </div>
+          <div class="video-item ">
+              <h4>Articulate AnyMesh</h4>
+              <img src="./static/URDF/44817_storagefurniture/AnyMesh.gif" class="comparison-image" />
+          </div>
+      </div>
+  </section>
 
 <style>
   /* Teaser image responsive styling */
@@ -652,62 +748,255 @@
   .video-item.emphasized video {
       border: 2px solid #8b8cc0; /* Golden border around video */
   }
+
+  /* Comparison Styles */
+  .comparison-grid {
+      margin-top: 2rem;
+  }
+
+  .comparison-header {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #333;
+  }
+
+  .comparison-header-label {
+      text-align: center;
+  }
+
+  .comparison-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .comparison-item {
+      text-align: center;
+  }
+
+  .comparison-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  .placeholder {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #f0f0f0;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 14px;
+  }
+
+  @media (max-width: 1200px) {
+      .comparison-row {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+
+  @media (max-width: 768px) {
+      .comparison-row {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  /* Video Gallery Styles */
+  #video-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+  }
+
+  #video-items .video-header {
+      grid-column: 1 / -1;
+  }
+
+  .video-header {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px;
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 10px;
+  }
+
+  .video-header-label {
+      text-align: center;
+  }
+
+  .in_the_wild_item {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .video-content {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      align-items: start;
+  }
+
+  .media-container {
+      text-align: center;
+  }
+
+  .media-container img,
+  .media-container video {
+      width: 100%;
+      height: auto;
+      /* aspect-ratio: 1;
+      object-fit: cover; */
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 1200px) {
+      #video-items {
+          grid-template-columns: 1fr;
+      }
+
+      .video-header {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+
+  @media (max-width: 768px) {
+      .video-header,
+      .video-content {
+          grid-template-columns: 1fr;
+      }
+  }
 </style>
 
-<!-- Acknowledgments -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">🌷 Acknowledgments 🌷</h2>
-    <div class="content has-text-justified">
+<script>
+  const galleryData = [
+    {"name":"1","input":"1_input.jpg","moge2":"1_moge2.png","ours":"1_ours.png"},
+    {"name":"2","input":"2_input.jpg","moge2":"2_moge2.png","ours":"2_ours.png"},
+    {"name":"3","input":"3_input.jpg","moge2":"3_moge2.png","ours":"3_ours.png"},
+    {"name":"4","input":"4_input.jpg","moge2":"4_moge2.png","ours":"4_ours.png"},
+    {"name":"5","input":"5_input.jpg","moge2":"5_moge2.png","ours":"5_ours.png"},
+    {"name":"7","input":"7_input.jpg","moge2":"7_moge2.png","ours":"7_ours.png"},
+    {"name":"8","input":"8_input.jpg","moge2":"8_moge2.png","ours":"8_ours.png"},
+    {"name":"9","input":"9_input.jpg","moge2":"9_moge2.png","ours":"9_ours.png"},
+    {"name":"10","input":"10_input.jpg","moge2":"10_moge2.png","ours":"10_ours.png"},
+    {"name":"11","input":"11_input.jpg","moge2":"11_moge2.png","ours":"11_ours.png"},
+    {"name":"12","input":"12_input.jpg","moge2":"12_moge2.png","ours":"12_ours.png"},
+    {"name":"13","input":"13_input.jpg","moge2":"13_moge2.png","ours":"13_ours.png"},
+    {"name":"14","input":"14_input.jpg","moge2":"14_moge2.png","ours":"14_ours.png"},
+    {"name":"15","input":"15_input.jpg","moge2":"15_moge2.png","ours":"15_ours.png"}
+  ];
 
-      <p>
-        We thank all the members of the UCLA AIVC Lab for helpful discussions and feedback. 
-        We also thank Rosalinda Chen for her support in setting up the robotic manipulation tasks used to evaluate our generated assets in downstream applications. 
-        Finally, we thank Yuchen Lin for guidance on using PartCrafter and for help with adopting their implementation as the foundation of our codebase.
-      </p>
+  async function loadGallery() {
+      try {
+          const data = galleryData;
+          const videoContainer = document.getElementById('video-items');
 
-    </div>
-  </div>
-</section>
+          // Add header row
+          const headerDiv = document.createElement('div');
+          headerDiv.className = 'video-header';
+          headerDiv.innerHTML = `
+              <div class="video-header-label">Input</div>
+              <div class="video-header-label">MoGe-2</div>
+              <div class="video-header-label">Ours</div>
+              <div class="video-header-label">Input</div>
+              <div class="video-header-label">MoGe-2</div>
+              <div class="video-header-label">Ours</div>
+          `;
+          videoContainer.appendChild(headerDiv);
 
-<!-- BibTeX -->
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">🦜 BibTeX 🦜</h2>
-    <div class="content has-text-justified">
+          galleryData.forEach(item => {
+              const itemDiv = document.createElement('div');
+              itemDiv.className = 'in_the_wild_item';
+              itemDiv.innerHTML = `
+                  <div class="video-content">
+                      <div class="media-container">
+                          <img src="static/images/in_the_wild/${item.input}" alt="Input">
+                      </div>
+                      <div class="media-container">
+                          <img src="static/images/in_the_wild/${item.moge2}" alt="MoGe-2">
+                      </div>
+                      <div class="media-container">
+                          <img src="static/images/in_the_wild/${item.ours}" alt="Ours">
+                      </div>
+                  </div>
+              `;
+              videoContainer.appendChild(itemDiv);
+          });
 
-      <p>
-        If you find our work helpful, please consider citing:
-      </p>
-<pre><code>@misc{he2025spark,
-title={SPARK: Sim-ready Part-level Articulated Reconstruction with VLM Knowledge}, 
-author={Yumeng He and Ying Jiang and Jiayin Lu and Yin Yang and Chenfanfu Jiang},
-year={2025},
-eprint={2512.01629},
-url={https://arxiv.org/abs/2512.01629}
-}</code></pre>
-    </div>
-  </div>
-</section>
+      } catch (error) {
+          console.error('Loading failed:', error);
+      }
+  }
 
-<!-- Footer -->
-<footer class="footer">
-  <div class="container">
+  window.addEventListener('DOMContentLoaded', loadGallery);
 
-    <!-- Copyright -->
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p style="text-align: center">
-            Website template is borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
-            Thanks for their effort.
-          </p>
-        </div>
-      </div>
-    </div>
+  // Ensure all videos play and loop properly
+  function ensureVideoPlayback() {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+          // Force reload and play
+          video.load();
 
-  </div>
-</footer>
+          // Handle play promise
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+              playPromise.catch(error => {
+                  console.log('Auto-play prevented:', error);
+                  // Try playing on user interaction
+                  document.addEventListener('click', () => {
+                      video.play().catch(e => console.log('Play failed:', e));
+                  }, { once: true });
+              });
+          }
 
+          // Ensure looping when video ends
+          video.addEventListener('ended', function() {
+              this.currentTime = 0;
+              this.play();
+          });
+
+          // Handle stalling
+          video.addEventListener('stalled', function() {
+              console.log('Video stalled, reloading...');
+              this.load();
+              this.play();
+          });
+
+          // Handle errors
+          video.addEventListener('error', function(e) {
+              console.error('Video error:', e);
+              setTimeout(() => {
+                  this.load();
+                  this.play();
+              }, 1000);
+          });
+      });
+  }
+
+  window.addEventListener('DOMContentLoaded', ensureVideoPlayback);
+</script>
 </body>
 </html>

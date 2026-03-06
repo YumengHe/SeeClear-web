@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Birth of a Painting: Differentiable Brushstroke Reconstruction - A novel framework for reconstructing painting processes through realistic brushstroke generation">
+  <meta name="keywords" content="Painting Reconstruction, Brushstroke Generation, Neural Painting, Differentiable Rendering">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birth of a Painting: Differentiable Brushstroke Reconstruction</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <!-- CSS from CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    /* Custom styles */
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+
+    .publication-title {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .publication-authors {
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    .author-block {
+      display: inline-block;
+      margin: 0 0.2rem;
+    }
+
+    .dnerf {
+      font-variant: small-caps;
+      color: #4a90e2;
+      font-weight: bold;
+    }
+
+    .interpolation-image {
+      width: 100%;
+      height: auto;
+    }
+
+    .content {
+      text-align: left;
+    }
+
+    .hero-body {
+      padding: 3rem 1.5rem;
+    }
+
+    .teaser .hero-body {
+      padding: 1.5rem;
+    }
+
+    .button {
+      margin: 0.2rem;
+    }
+
+    .section {
+      padding: 3rem 1.5rem;
+    }
+
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Birth of a Painting: Differentiable Brushstroke Reconstruction</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://yingjiang96.github.io/">Ying Jiang</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://jlu227.wixsite.com/kay-lu">Jiayin Lu</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://yunuoch.github.io/">Yunuo Chen</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://heyumeng.com/">Yumeng He</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://kuiwuchn.github.io/">Kui Wu</a><sup>3</sup>,</span> 
+              <span class="author-block">
+                <a href="https://yangzzzy.github.io/">Yin Yang</a><sup>4</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.math.ucla.edu/~cffjiang/">Chenfanfu Jiang</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>UCLA,</span>
+              <span class="author-block"><sup>2</sup>USC,</span>
+              <span class="author-block"><sup>3</sup>LIGHTSPEED,</span>
+              <span class="author-block"><sup>4</sup>Utah</span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>*</sup>Equal Contributions</span>
+            </div>
+
+
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2511.13191" 
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+                <!-- Code Link. -->
+                <!-- <span class="link-block">
+                  <a
+                    href="#"
+                    class="external-link button is-normal is-rounded is-dark"
+                    onclick="return false;"
+                    style="cursor: not-allowed;"
+                  >
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (coming soon)</span>
+                  </a>
+                </span> -->
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+          <source src="painting.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <video autoplay muted loop playsinline preload="auto" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+          <source src="brushes.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <h2 class="subtitle has-text-centered">
+          We visualize the reconstructed paintings produced by our method, along with one example of an intermediate painting stage. Our method reconstructs the painting process by progressively generating realistic brushstrokes, resulting in visually coherent and complete paintings.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Painting embodies a unique form of visual storytelling, where the creation process is as significant as the final artwork. Although recent advances in generative models have enabled visually compelling painting synthesis, most existing methods focus solely on final image generation or patch-based process simulation, lacking explicit stroke structure and failing to produce smooth, realistic shading. In this work, we present a differentiable stroke reconstruction framework that unifies painting, stylized texturing, and smudging to faithfully reproduce the human painting–smudging loop. Given an input image, our framework first optimizes single- and dual-color Bézier strokes through a parallel differentiable paint renderer, followed by a style generation module that synthesizes geometry-conditioned textures across diverse painting styles. We further introduce a differentiable smudge operator to enable natural color blending and shading. Coupled with a coarse-to-fine optimization strategy, our method jointly optimizes stroke geometry, color, and texture under geometric and semantic guidance. Extensive experiments on oil, watercolor, ink, and digital paintings demonstrate that our approach produces realistic and expressive stroke reconstructions, smooth tonal transitions, and richly stylized appearances, offering a unified model for expressive digital painting creation. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="publication-video">
+            <iframe src="https://drive.google.com/file/d/13oALN6RuJGcwhVAVQROJbjDmiQQzwFDe/preview"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div> -->
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Pipeline</h2>
+      <video id="pipeline-video" autoplay muted loop playsinline class="interpolation-image" style="width: 100%;" onloadedmetadata="this.playbackRate = 1.5;">
+        <source src="method.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p>
+        Our pipeline reconstructs the painting process from a finished artwork. Starting with a target painting, we decompose it into
+        a sequence of brushstrokes using our differentiable rendering framework. The method learns to generate realistic strokes that
+        progressively build up the final painting, capturing the artistic style and technique. Our approach supports multiple painting
+        mediums including oil, watercolor, ink, and digital art, enabling diverse artistic reconstruction scenarios.
+      </p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section">
+    <div class="container">
+        <h2 class="title is-3">Video Demo Gallery</h2>
+
+        <div id="with-video-section">
+            <div id="video-items"></div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="section">
+    <div class="container">
+        <h2 class="title is-3">Comparison</h2>
+
+        <div class="comparison-grid">
+            <!-- Header Row -->
+            <div class="comparison-header">
+                <div class="comparison-header-label">Input</div>
+                <div class="comparison-header-label">Ours</div>
+                <div class="comparison-header-label">Learn to Paint</div>
+                <div class="comparison-header-label">Stylized Neural Painting</div>
+                <div class="comparison-header-label">Paint Transformer</div>
+                <div class="comparison-header-label">O&R</div>
+            </div>
+
+            <!-- Row 1: Charing Cross Bridge 02 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_original-18483.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_final-18486.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_learntopaint-18489.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_stylizedneuralpainting-18492.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_painttransformer-18495.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18498.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 2: Still Life -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_original-18626.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18611.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_learntopaint-18623.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_stylizedneuralpainting-18620.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/oil_Still Life_1024_painttransformer-18617.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18614.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 3: Flower Garden And Bungalow Bermuda -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_original-18593.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_final-18596.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_learntopaint-18599.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_stylizedneuralpainting-18602.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_painttransformer-18605.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18608.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 4: Girl On A Swing -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_original-18590.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18575.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_learntopaint-18578.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_stylizedneuralpainting-18581.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/watercolor_Girl On A Swing_1024_painttransformer-18584.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18587.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 5: Painting After Shitao -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/00_original-18537.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18540.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_learntopaint-18543.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_painttransformer-18546.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_stylizedneuralpainting-18549.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/pasted-movie-18552.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 6: Digital 32 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_original-18534.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18519.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_learntopaint-18522.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_stylizedneuralpainting-18525.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_32_1024_painttransformer-18528.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18531.png" alt="O&R">
+                </div>
+            </div>
+
+            <!-- Row 7: Digital 17 -->
+            <div class="comparison-row">
+                <div class="comparison-item">
+                    <img src="comparison_images/00_original-18501.png" alt="Input">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18507.png" alt="Ours">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_learntopaint-18510.png" alt="Learn to Paint">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_stylizedneuralpainting-18513.png" alt="Stylized Neural Painting">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/digital_17_1024_painttransformer-18516.png" alt="Paint Transformer">
+                </div>
+                <div class="comparison-item">
+                    <img src="comparison_images/01_result_optimizeandreduce-18504.png" alt="O&R">
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <style>
+    /* Comparison Styles */
+    .comparison-grid {
+        margin-top: 2rem;
+    }
+
+    .comparison-header {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 15px;
+        margin-bottom: 20px;
+        padding: 15px 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .comparison-header-label {
+        text-align: center;
+    }
+
+    .comparison-row {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 15px;
+        margin-bottom: 30px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .comparison-item {
+        text-align: center;
+    }
+
+    .comparison-item img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    .placeholder {
+        width: 100%;
+        aspect-ratio: 1;
+        background: #f0f0f0;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-size: 14px;
+    }
+
+    @media (max-width: 1200px) {
+        .comparison-row {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .comparison-row {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* Video Gallery Styles */
+    #video-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    #video-items .video-header {
+        grid-column: 1 / -1;
+    }
+
+    .video-header {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 15px;
+        padding: 15px 20px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .video-header-label {
+        text-align: center;
+    }
+
+    .video-item {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .video-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        align-items: start;
+    }
+
+    .media-container {
+        text-align: center;
+    }
+
+    .media-container img,
+    .media-container video {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 1200px) {
+        #video-items {
+            grid-template-columns: 1fr;
+        }
+
+        .video-header {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .video-header,
+        .video-content {
+            grid-template-columns: 1fr;
+        }
+    }
+  </style>
+
+  <script>
+    const galleryData = {"with_video":[{"name":"Corfu Lights And Shadows","original":"Corfu Lights And Shadows_original.png","result":"Corfu Lights And Shadows_result.png","video":"Corfu Lights And Shadows.mp4"},{"name":"2","original":"2_original.png","result":"2_result.png","video":"2.mp4"},{"name":"23","original":"23_original.png","result":"23_result.png","video":"23.mp4"},{"name":"24","original":"24_original.png","result":"24_result.png","video":"24.mp4"},{"name":"All Ave Maria","original":"All Ave Maria_original.png","result":"All Ave Maria_result.png","video":"All Ave Maria.mp4"},{"name":"Argenteuil 1","original":"Argenteuil 1_original.png","result":"Argenteuil 1_result.png","video":"Argenteuil 1.mp4"},{"name":"Boaters At Argenteuil","original":"Boaters At Argenteuil_original.png","result":"Boaters At Argenteuil_result.png","video":"Boaters At Argenteuil.mp4"},{"name":"Boats in the port of le havre","original":"Boats in the port of le havre_original.png","result":"Boats in the port of le havre_result.png","video":"Boats in the port of le havre.mp4"},{"name":"18","original":"18_original.png","result":"18_result.png","video":"18.mp4"},{"name":"Cottonwood Tree in Spring","original":"Cottonwood Tree in Spring_original.png","result":"Cottonwood Tree in Spring_result.png","video":"Cottonwood Tree in Spring.mp4"},{"name":"FIshing Boat","original":"FIshing Boat_original.png","result":"FIshing Boat_result.png","video":"FIshing Boat.mp4"},{"name":"Flower Abstraction","original":"Flower Abstraction_original.png","result":"Flower Abstraction_result.png","video":"Flower Abstraction.mp4"},{"name":"Fortress Roads And Rocks","original":"Fortress Roads And Rocks_original.png","result":"Fortress Roads And Rocks_result.png","video":"Fortress Roads And Rocks.mp4"},{"name":"Glad Day","original":"Glad Day_original.png","result":"Glad Day_result.png","video":"Glad Day.mp4"},{"name":"Green Yellow and Orange","original":"Green Yellow and Orange_original.png","result":"Green Yellow and Orange_result.png","video":"Green Yellow and Orange.mp4"},{"name":"Misty Morning On the Seine","original":"Misty Morning On the Seine_original.png","result":"Misty Morning On the Seine_result.png","video":"Misty Morning On the Seine.mp4"},{"name":"Morning Glory with Black","original":"Morning Glory with Black_original.png","result":"Morning Glory with Black_result.png","video":"Morning Glory with Black.mp4"},{"name":"Mount EMei","original":"Mount EMei_original.png","result":"Mount EMei_result.png","video":"Mount EMei.mp4"},{"name":"Sailing Off Gloucester","original":"Sailing Off Gloucester_original.png","result":"Sailing Off Gloucester_result.png","video":"Sailing Off Gloucester.mp4"},{"name":"Shore At Bermuda","original":"Shore At Bermuda_original.png","result":"Shore At Bermuda_result.png","video":"Shore At Bermuda.mp4"},{"name":"Splashed Color Landscape","original":"Splashed Color Landscape_original.png","result":"Splashed Color Landscape_result.png","video":"Splashed Color Landscape.mp4"},{"name":"lemon","original":"lemon_original.png","result":"lemon_result.png","video":"lemon.mp4"}],"without_video":[{"name":"1","original":"1_original.png","result":"1_result.png"},{"name":"10","original":"10_original.png","result":"10_result.png"},{"name":"11","original":"11_original.png","result":"11_result.png"},{"name":"12","original":"12_original.png","result":"12_result.png"},{"name":"13","original":"13_original.png","result":"13_result.png"},{"name":"14","original":"14_original.png","result":"14_result.png"},{"name":"15","original":"15_original.png","result":"15_result.png"},{"name":"16","original":"16_original.png","result":"16_result.png"},{"name":"17","original":"17_original.png","result":"17_result.png"},{"name":"20","original":"20_original.png","result":"20_result.png"},{"name":"21","original":"21_original.png","result":"21_result.png"},{"name":"22","original":"22_original.png","result":"22_result.png"},{"name":"25","original":"25_original.png","result":"25_result.png"},{"name":"26","original":"26_original.png","result":"26_result.png"},{"name":"27","original":"27_original.png","result":"27_result.png"},{"name":"28","original":"28_original.png","result":"28_result.png"},{"name":"3","original":"3_original.png","result":"3_result.png"},{"name":"31","original":"31_original.png","result":"31_result.png"},{"name":"32","original":"32_original.png","result":"32_result.png"},{"name":"33","original":"33_original.png","result":"33_result.png"},{"name":"34","original":"34_original.png","result":"34_result.png"},{"name":"35","original":"35_original.png","result":"35_result.png"},{"name":"36","original":"36_original.png","result":"36_result.png"},{"name":"4","original":"4_original.png","result":"4_result.png"},{"name":"5","original":"5_original.png","result":"5_result.png"},{"name":"6","original":"6_original.png","result":"6_result.png"},{"name":"7","original":"7_original.png","result":"7_result.png"},{"name":"7-webp","original":"7-webp_original.png","result":"7-webp_result.png"},{"name":"8","original":"8_original.png","result":"8_result.png"},{"name":"8-webp","original":"8-webp_original.png","result":"8-webp_result.png"},{"name":"9","original":"9_original.png","result":"9_result.png"},{"name":"9-webp","original":"9-webp_original.png","result":"9-webp_result.png"},{"name":"A Good Shot","original":"A Good Shot_original.png","result":"A Good Shot_result.png"},{"name":"A Sunday In Eindhoven","original":"A Sunday In Eindhoven_original.png","result":"A Sunday In Eindhoven_result.png"},{"name":"A Sunflower From Maggie","original":"A Sunflower From Maggie_original.png","result":"A Sunflower From Maggie_result.png"},{"name":"A Wall Nassau","original":"A Wall Nassau_original.png","result":"A Wall Nassau_result.png"},{"name":"Anxiety 1894","original":"Anxiety 1894_original.png","result":"Anxiety 1894_result.png"},{"name":"Artists Sketching In The White Mountains","original":"Artists Sketching In The White Mountains_original.png","result":"Artists Sketching In The White Mountains_result.png"},{"name":"Ash Trees At Cropthorne Worcestershire","original":"Ash Trees At Cropthorne Worcestershire_original.png","result":"Ash Trees At Cropthorne Worcestershire_result.png"},{"name":"At The Window","original":"At The Window_original.png","result":"At The Window_result.png"},{"name":"At Val Saint Nicolas Near Dieppe","original":"At Val Saint Nicolas Near Dieppe_original.png","result":"At Val Saint Nicolas Near Dieppe_result.png"},{"name":"Beauty In Red Hair Kerchief Wooden Shoes White Robe Bamboos 1980","original":"Beauty In Red Hair Kerchief Wooden Shoes White Robe Bamboos 1980_original.png","result":"Beauty In Red Hair Kerchief Wooden Shoes White Robe Bamboos 1980_result.png"},{"name":"Bindweed And Grapes 1950","original":"Bindweed And Grapes 1950_original.png","result":"Bindweed And Grapes 1950_result.png"},{"name":"Bindweed Dodder","original":"Bindweed Dodder_original.png","result":"Bindweed Dodder_result.png"},{"name":"Blossoms 1977","original":"Blossoms 1977_original.png","result":"Blossoms 1977_result.png"},{"name":"Boats On The Thames London","original":"Boats On The Thames London_original.png","result":"Boats On The Thames London_result.png"},{"name":"Branch Of Lemons","original":"Branch Of Lemons_original.png","result":"Branch Of Lemons_result.png"},{"name":"Briar 1951","original":"Briar 1951_original.png","result":"Briar 1951_result.png"},{"name":"Briar 1955","original":"Briar 1955_original.png","result":"Briar 1955_result.png"},{"name":"Carrieres Saint Denis 1872","original":"Carrieres Saint Denis 1872_original.png","result":"Carrieres Saint Denis 1872_result.png"},{"name":"Charing Cross Bridge 02","original":"Charing Cross Bridge 02_original.png","result":"Charing Cross Bridge 02_result.png"},{"name":"Charing Cross Bridge Study 1901","original":"Charing Cross Bridge Study 1901_original.png","result":"Charing Cross Bridge Study 1901_result.png"},{"name":"Christ In The Sepulchre","original":"Christ In The Sepulchre_original.png","result":"Christ In The Sepulchre_result.png"},{"name":"Cottonwood Tree In Spring","original":"Cottonwood Tree In Spring_original.png","result":"Cottonwood Tree In Spring_result.png"},{"name":"Croquet Players 1","original":"Croquet Players 1_original.png","result":"Croquet Players 1_result.png"},{"name":"Dog On A Log","original":"Dog On A Log_original.png","result":"Dog On A Log_result.png"},{"name":"Early Snow 1965","original":"Early Snow 1965_original.png","result":"Early Snow 1965_result.png"},{"name":"Flower Garden And Bungalow Bermuda","original":"Flower Garden And Bungalow Bermuda_original.png","result":"Flower Garden And Bungalow Bermuda_result.png"},{"name":"Fog 1872","original":"Fog 1872_original.png","result":"Fog 1872_result.png"},{"name":"From Thuringewald 1905","original":"From Thuringewald 1905_original.png","result":"From Thuringewald 1905_result.png"},{"name":"Fun At A Lotus Pond 1","original":"Fun At A Lotus Pond 1_original.png","result":"Fun At A Lotus Pond 1_result.png"},{"name":"Fun At A Lotus Pond 2","original":"Fun At A Lotus Pond 2_original.png","result":"Fun At A Lotus Pond 2_result.png"},{"name":"Fun At A Lotus Pond 3","original":"Fun At A Lotus Pond 3_original.png","result":"Fun At A Lotus Pond 3_result.png"},{"name":"Girl On A Swing","original":"Girl On A Swing_original.png","result":"Girl On A Swing_result.png"},{"name":"Glad Day Or The Dance Of Albion","original":"Glad Day Or The Dance Of Albion_original.png","result":"Glad Day Or The Dance Of Albion_result.png"},{"name":"Green Yellow And Orange","original":"Green Yellow And Orange_original.png","result":"Green Yellow And Orange_result.png"},{"name":"High Up On The Mountain","original":"High Up On The Mountain_original.png","result":"High Up On The Mountain_result.png"},{"name":"Hollyhocks In The Saratov Region 1889","original":"Hollyhocks In The Saratov Region 1889_original.png","result":"Hollyhocks In The Saratov Region 1889_result.png"},{"name":"Horses","original":"Horses_original.png","result":"Horses_result.png"},{"name":"Houses Near The Gravel Pit 1913","original":"Houses Near The Gravel Pit 1913_original.png","result":"Houses Near The Gravel Pit 1913_result.png"},{"name":"Hudson River Logging","original":"Hudson River Logging_original.png","result":"Hudson River Logging_result.png"},{"name":"Ile Malin","original":"Ile Malin_original.png","result":"Ile Malin_result.png"},{"name":"In A Medici Villa","original":"In A Medici Villa_original.png","result":"In A Medici Villa_result.png"},{"name":"Likvidambra Taiwan And The Cicada 1950","original":"Likvidambra Taiwan And The Cicada 1950_original.png","result":"Likvidambra Taiwan And The Cicada 1950_result.png"},{"name":"Long Melons","original":"Long Melons_original.png","result":"Long Melons_result.png"},{"name":"Loquat 1945","original":"Loquat 1945_original.png","result":"Loquat 1945_result.png"},{"name":"Lotus","original":"Lotus_original.png","result":"Lotus_result.png"},{"name":"Lotus 1956","original":"Lotus 1956_original.png","result":"Lotus 1956_result.png"},{"name":"Mist At Dawn 1974","original":"Mist At Dawn 1974_original.png","result":"Mist At Dawn 1974_result.png"},{"name":"Misty Morning On The Seine","original":"Misty Morning On The Seine_original.png","result":"Misty Morning On The Seine_result.png"},{"name":"Mona Lisa","original":"Mona Lisa_original.png","result":"Mona Lisa_result.png"},{"name":"Morning Glory With Black","original":"Morning Glory With Black_original.png","result":"Morning Glory With Black_result.png"},{"name":"Painting After Shitao S Wilderness Colors 1930","original":"Painting After Shitao S Wilderness Colors 1930_original.png","result":"Painting After Shitao S Wilderness Colors 1930_result.png"},{"name":"Peach Blossom Spring 1983","original":"Peach Blossom Spring 1983_original.png","result":"Peach Blossom Spring 1983_result.png"},{"name":"Peony 1956","original":"Peony 1956_original.png","result":"Peony 1956_result.png"},{"name":"Provincetown Dunes 1914","original":"Provincetown Dunes 1914_original.png","result":"Provincetown Dunes 1914_result.png"},{"name":"Pumpkin 1930","original":"Pumpkin 1930_original.png","result":"Pumpkin 1930_result.png"},{"name":"Rowing Home","original":"Rowing Home_original.png","result":"Rowing Home_result.png"},{"name":"Still Life","original":"Still Life_original.png","result":"Still Life_result.png"},{"name":"Still Life 1","original":"Still Life 1_original.png","result":"Still Life 1_result.png"},{"name":"Still Life 1920","original":"Still Life 1920_original.png","result":"Still Life 1920_result.png"},{"name":"Still Life 1959","original":"Still Life 1959_original.png","result":"Still Life 1959_result.png"},{"name":"The Coming Storm","original":"The Coming Storm_original.png","result":"The Coming Storm_result.png"},{"name":"The Scream 1910","original":"The Scream 1910_original.png","result":"The Scream 1910_result.png"},{"name":"Trees 1910","original":"Trees 1910_original.png","result":"Trees 1910_result.png"}]};
+
+    async function loadGallery() {
+        try {
+            const data = galleryData;
+            const videoContainer = document.getElementById('video-items');
+
+            // Add header row
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'video-header';
+            headerDiv.innerHTML = `
+                <div class="video-header-label">Input</div>
+                <div class="video-header-label">Result</div>
+                <div class="video-header-label">Video</div>
+                <div class="video-header-label">Input</div>
+                <div class="video-header-label">Result</div>
+                <div class="video-header-label">Video</div>
+            `;
+            videoContainer.appendChild(headerDiv);
+
+            data.with_video.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'video-item';
+                itemDiv.innerHTML = `
+                    <div class="video-content">
+                        <div class="media-container">
+                            <img src="data/${item.original}" alt="Original">
+                        </div>
+                        <div class="media-container">
+                            <img src="data/${item.result}" alt="Result">
+                        </div>
+                        <div class="media-container">
+                            <video src="data/${item.video}" controls loop autoplay muted>
+                                Your browser does not support video playback.
+                            </video>
+                        </div>
+                    </div>
+                `;
+                videoContainer.appendChild(itemDiv);
+            });
+
+        } catch (error) {
+            console.error('Loading failed:', error);
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadGallery);
+
+    // Ensure all videos play and loop properly
+    function ensureVideoPlayback() {
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            // Force reload and play
+            video.load();
+
+            // Handle play promise
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log('Auto-play prevented:', error);
+                    // Try playing on user interaction
+                    document.addEventListener('click', () => {
+                        video.play().catch(e => console.log('Play failed:', e));
+                    }, { once: true });
+                });
+            }
+
+            // Ensure looping when video ends
+            video.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            });
+
+            // Handle stalling
+            video.addEventListener('stalled', function() {
+                console.log('Video stalled, reloading...');
+                this.load();
+                this.play();
+            });
+
+            // Handle errors
+            video.addEventListener('error', function(e) {
+                console.error('Video error:', e);
+                setTimeout(() => {
+                    this.load();
+                    this.play();
+                }, 1000);
+            });
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', ensureVideoPlayback);
+  </script>
+
+</body>
+
+</html>
