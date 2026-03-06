@@ -146,8 +146,11 @@
   <!-- Gallery Section -->
   <section class="section">
     <div class="container">
-        <h2 class="title is-3" style="text-align: center;">♣️ In The Wild Results ♣️</h2>
-
+        <h2 class="title is-3" style="text-align: center;">♣️ Qualitative Comparison on In-the-Wild Images  ♣️</h2>
+        <p>
+          MoGe-2 exhibits depth leakage through transparent objects (e.g., a water bottle), while our method produces more accurate and consistent depth predictions.
+        </p>
+        <br>
         <div id="with-video-section">
             <div id="video-items"></div>
         </div>
@@ -158,169 +161,77 @@
   <section class="section">
     <div class="container">
         <h2 class="title is-3" style="text-align: center;">♠️ Comparison ♠️</h2>
-
+        <p>
+          We evaluate transparent-object depth estimation on ClearGrasp and TransPhy3D datasets. 
+          Compared with the baseline. 
+          SeeClear produces accurate transparent-object depth.
+        </p>
         <div class="comparison-grid">
             <!-- Header Row -->
-            <div class="comparison-header">
-                <div class="comparison-header-label">Input</div>
-                <div class="comparison-header-label">Ground Truth</div>
-                <div class="comparison-header-label">Depth4ToM</div>
-                <div class="comparison-header-label">MODEST</div>
-                <div class="comparison-header-label">D4RD</div>
-                <div class="comparison-header-label">Ours</div>
-            </div>
+            <!-- <div class="comparison-header">
+              <div class="comparison-header-label">Input</div>
+              <div class="comparison-header-label">Ground Truth</div>
+              <div class="comparison-header-label">Depth4ToM</div>
+              <div class="comparison-header-label">MODEST</div>
+              <div class="comparison-header-label">D4RD</div>
+              <div class="comparison-header-label">DKT</div>
+              <div class="comparison-header-label">Marigold</div>
+              <div class="comparison-header-label">GenPercept</div>
+              <div class="comparison-header-label">GeoWizard</div>
+              <div class="comparison-header-label">DA3</div>
+              <div class="comparison-header-label">MoGe-2</div>
+              <div class="comparison-header-label">Ours</div>
+            </div> -->
 
-            <!-- Row 1: Charing Cross Bridge 02 -->
+            <!-- Row 1 -->
             <div class="comparison-row">
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Charing Cross Bridge 02_original-18483.png" alt="Input">
+                    <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                    Input
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_final-18486.png" alt="Ours">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  Ground Truth
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_learntopaint-18489.png" alt="Learn to Paint">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  Depth4ToM
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_stylizedneuralpainting-18492.png" alt="Stylized Neural Painting">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  MODEST
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Charing Cross Bridge 02_1024_painttransformer-18495.png" alt="Paint Transformer">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  D4RD  
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18498.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 2: Still Life -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/oil_Still Life_original-18626.png" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  DKT
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18611.png" alt="Ours">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  Marigold
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Still Life_1024_learntopaint-18623.png" alt="Learn to Paint">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  GenPercept
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Still Life_1024_stylizedneuralpainting-18620.png" alt="Stylized Neural Painting">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  GeoWizard
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/oil_Still Life_1024_painttransformer-18617.png" alt="Paint Transformer">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  DA3
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18614.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 3: Flower Garden And Bungalow Bermuda -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_original-18593.png" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  MoGe-2
                 </div>
                 <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_final-18596.png" alt="Ours">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_learntopaint-18599.png" alt="Learn to Paint">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_stylizedneuralpainting-18602.png" alt="Stylized Neural Painting">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Flower Garden And Bungalow Bermuda_1024_painttransformer-18605.png" alt="Paint Transformer">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18608.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 4: Girl On A Swing -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Girl On A Swing_original-18590.png" alt="Input">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18575.png" alt="Ours">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Girl On A Swing_1024_learntopaint-18578.png" alt="Learn to Paint">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Girl On A Swing_1024_stylizedneuralpainting-18581.png" alt="Stylized Neural Painting">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/watercolor_Girl On A Swing_1024_painttransformer-18584.png" alt="Paint Transformer">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18587.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 5: Painting After Shitao -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/00_original-18537.png" alt="Input">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18540.png" alt="Ours">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_learntopaint-18543.png" alt="Learn to Paint">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_painttransformer-18546.png" alt="Paint Transformer">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/ink_Painting After Shitao S Wilderness Colors 1930_1024_stylizedneuralpainting-18549.png" alt="Stylized Neural Painting">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/pasted-movie-18552.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 6: Digital 32 -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_32_original-18534.png" alt="Input">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18519.png" alt="Ours">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_32_1024_learntopaint-18522.png" alt="Learn to Paint">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_32_1024_stylizedneuralpainting-18525.png" alt="Stylized Neural Painting">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_32_1024_painttransformer-18528.png" alt="Paint Transformer">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18531.png" alt="O&R">
-                </div>
-            </div>
-
-            <!-- Row 7: Digital 17 -->
-            <div class="comparison-row">
-                <div class="comparison-item">
-                    <img src="comparison_images/00_original-18501.png" alt="Input">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/image_stylized_rendered_stroke_0089-18507.png" alt="Ours">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_17_1024_learntopaint-18510.png" alt="Learn to Paint">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_17_1024_stylizedneuralpainting-18513.png" alt="Stylized Neural Painting">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/digital_17_1024_painttransformer-18516.png" alt="Paint Transformer">
-                </div>
-                <div class="comparison-item">
-                    <img src="comparison_images/01_result_optimizeandreduce-18504.png" alt="O&R">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  Ours
                 </div>
             </div>
         </div>
@@ -329,10 +240,7 @@
 
   <section class="video-comparison-section">
     <h2 class="title is-3" style="text-align: center;">♠️ Qualitative Comparison on Shape Reconstruction ♠️</h2>
-    <p>
-      We compare our results with OmniPart, PartCrafter, and URDFormer.
-      Our method fulfills accurate, high-fidelity articulated object shape reconstruction.
-    </p>
+    
       <h3>Microwave</h3>
       <div class="video-container">
           <div class="video-item">
@@ -906,7 +814,10 @@
     {"name":"12","input":"12_input.jpg","moge2":"12_moge2.png","ours":"12_ours.png"},
     {"name":"13","input":"13_input.jpg","moge2":"13_moge2.png","ours":"13_ours.png"},
     {"name":"14","input":"14_input.jpg","moge2":"14_moge2.png","ours":"14_ours.png"},
-    {"name":"15","input":"15_input.jpg","moge2":"15_moge2.png","ours":"15_ours.png"}
+    {"name":"15","input":"15_input.jpg","moge2":"15_moge2.png","ours":"15_ours.png"},
+    {"name":"16","input":"16_input.png","moge2":"16_moge2.png","ours":"16_ours.png"},
+    {"name":"17","input":"17_input.jpg","moge2":"17_moge2.png","ours":"17_ours.png"},
+    {"name":"18","input":"18_input.png","moge2":"18_moge2.png","ours":"18_ours.png"}
   ];
 
   async function loadGallery() {
