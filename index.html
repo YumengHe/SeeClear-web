@@ -23,6 +23,7 @@
 
   <script src="./static/js/jquery.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/image-slider.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
 
@@ -235,6 +236,47 @@
                 </div>
             </div>
         </div>
+    </div>
+  </section>
+
+  <!-- Image Slider Section -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">🔄 Before & After: Transparent to Opaque 🔄</h2>
+          <p style="text-align: center; margin-bottom: 2rem; color: #666;">
+            Drag the slider left or right to see how our method transforms transparent objects into opaque representations. 
+            Left side shows the transparent input, right side shows our opaque prediction.
+          </p>
+          
+          <div id="image-slider-1" class="image-comparison-container" data-comparison-slider>
+            <div class="comparison-slider">
+              <div class="comparison-slider-after">
+                <img src="./static/images/slider/opaque_1.png" alt="Opaque Output">
+              </div>
+
+              <div class="comparison-slider-before">
+                <img src="./static/images/slider/transparent_1.png" alt="Transparent Input">
+              </div>
+
+              <!-- movable divider (updated by JS) -->
+              <div class="comparison-slider-divider" aria-hidden="true"></div>
+
+              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- persistent labels (not clipped) -->
+              <div class="comparison-label comparison-label-left">Transparent</div>
+              <div class="comparison-label comparison-label-right">Opaque</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -795,6 +837,183 @@
       .video-header,
       .video-content {
           grid-template-columns: 1fr;
+      }
+  }
+
+  /* Image Comparison Slider Styles */
+  .image-comparison-container {
+      position: relative;
+      width: 100%;
+      margin: 2rem auto;
+      max-width: 700px;
+  }
+
+  .comparison-slider {
+      position: relative;
+      width: 100%;
+      max-width: 1024px; /* don't grow beyond 1024px */
+      aspect-ratio: 1 / 1; /* keep square: height == width */
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      cursor: ew-resize;
+      overflow: hidden;
+  }
+
+    /* Keep both images full-size (cover the container). Only the .comparison-slider-before
+     container width is changed to reveal/clip the top image. */
+    .comparison-slider img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* keep full image visible without cropping */
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .comparison-slider-after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .comparison-slider-before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      /* keep full width and use clip-path to reveal portion so the image stays full-size */
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+        /* Divider element (moved dynamically by JS) */
+        .comparison-slider-divider {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2px;
+          height: 100%;
+          background: rgba(139, 140, 192, 0.6);
+          z-index: 8; /* below handle but above images */
+          pointer-events: none;
+        }
+  .comparison-slider-label {
+      position: absolute;
+      bottom: 15px;
+      padding: 6px 12px;
+      background: rgba(139, 140, 192, 0.85);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+  }
+
+    /* Labels positioned outside clipped layers so they remain visible */
+      .comparison-label {
+      position: absolute;
+      bottom: 15px;
+      padding: 6px 12px;
+      background: rgba(139, 140, 192, 0.85);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 4px;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+        z-index: 12; /* keep labels above handle and divider */
+    }
+
+    .comparison-label-left { left: 15px; }
+    .comparison-label-right { right: 15px; }
+
+  .comparison-slider-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -50%); /* center the handle on its left coordinate */
+      background: white;
+      border: 3px solid #8b8cc0;
+      border-radius: 50%;
+      cursor: grab;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(139, 140, 192, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .comparison-slider-handle:hover {
+      box-shadow: 0 6px 20px rgba(139, 140, 192, 0.6);
+      transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .comparison-slider-handle:active {
+      cursor: grabbing;
+  }
+
+  .comparison-slider-icon {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .comparison-slider-arrow {
+      position: absolute;
+      width: 3px;
+      height: 12px;
+      background: #8b8cc0;
+      border-radius: 2px;
+  }
+
+  .comparison-slider-arrow.left {
+      left: 4px;
+      clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
+      width: 4px;
+  }
+
+  .comparison-slider-arrow.right {
+      right: 4px;
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
+      width: 4px;
+  }
+
+  /* (pseudo-element removed — using .comparison-slider-divider element instead) */
+
+  @media (max-width: 768px) {
+      .image-comparison-container {
+          max-width: 100%;
+      }
+
+      .comparison-slider-handle {
+          width: 50px;
+          height: 50px;
+          margin-left: -25px;
+          margin-top: -25px;
+      }
+
+      .comparison-slider-label {
+          font-size: 12px;
+          bottom: 12px;
+          padding: 5px 10px;
       }
   }
 </style>
