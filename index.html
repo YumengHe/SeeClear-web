@@ -62,35 +62,94 @@
     </div>
   </section>
 
-  <section class="hero is-light is-small">
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class="carousel results-carousel">
-          <div class="item item-vase">
-            <img src="./static/inthewild/1/SPARK_blender.gif" class="comparison-image" />
+    <!-- Image Slider Section -->
+    <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <div class="slider-grid">
+          <!-- Slider 1 -->
+          <div id="image-slider-1" class="image-comparison-container" data-comparison-slider>
+            <div class="comparison-slider">
+              <div class="comparison-slider-before">
+                <img src="./static/images/in_the_wild/27_input.jpg" alt="Transparent Input">
+              </div>
+              <div class="comparison-slider-after">
+                <img src="./static/images/in_the_wild/27_result.png" alt="Opaque Output">
+              </div>
+
+              <!-- movable divider (updated by JS) -->
+              <div class="comparison-slider-divider" aria-hidden="true"></div>
+
+              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- persistent labels (not clipped) -->
+              <div class="comparison-label comparison-label-left">Transparent</div>
+              <div class="comparison-label comparison-label-right">Opaque</div>
+            </div>
           </div>
-          <div class="item item-tennis">
-            <img src="./static/inthewild/2/SPARK_blender.gif" class="comparison-image" />
+
+          <!-- Slider 2 -->
+          <div id="image-slider-2" class="image-comparison-container" data-comparison-slider>
+            <div class="comparison-slider">
+              <div class="comparison-slider-after">
+                <img src="./static/images/in_the_wild/28_result.png" alt="Opaque Output">
+              </div>
+
+              <div class="comparison-slider-before">
+                <img src="./static/images/in_the_wild/28_input.jpg" alt="Transparent Input">
+              </div>
+
+              <!-- movable divider (updated by JS) -->
+              <div class="comparison-slider-divider" aria-hidden="true"></div>
+
+              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- persistent labels (not clipped) -->
+              <div class="comparison-label comparison-label-left">Transparent</div>
+              <div class="comparison-label comparison-label-right">Opaque</div>
+            </div>
           </div>
-          <div class="item item-tennis">
-            <img src="./static/inthewild/3/SPARK_blender.gif" class="comparison-image" />
-          </div>
-          <div class="item item-diamond">
-            <img src="./static/inthewild/5/SPARK_blender.gif" class="comparison-image" />
-          </div>
-          <div class="item item-diamond">
-            <img src="./static/inthewild/6/SPARK_blender.gif" class="comparison-image" />
-          </div>
-          <div class="item item-diamond">
-            <img src="./static/inthewild/7/SPARK_blender.gif" class="comparison-image" />
-          </div>
-		  <div class="item item-diamond">
-            <img src="./static/demo/SPARK_blender2.gif" class="comparison-image" />
+
+          <!-- Slider 3 -->
+          <div id="image-slider-3" class="image-comparison-container" data-comparison-slider>
+            <div class="comparison-slider">
+              <div class="comparison-slider-after">
+                <img src="./static/images/in_the_wild/21_result.jpg" alt="Opaque Output">
+              </div>
+
+              <div class="comparison-slider-before">
+                <img src="./static/images/in_the_wild/21_input.jpg" alt="Transparent Input">
+              </div>
+
+              <!-- movable divider (updated by JS) -->
+              <div class="comparison-slider-divider" aria-hidden="true"></div>
+
+              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- persistent labels (not clipped) -->
+              <div class="comparison-label comparison-label-left">Transparent</div>
+              <div class="comparison-label comparison-label-right">Opaque</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+      </div>
+    </section>
   
   <section class="section">
     <div class="container is-max-desktop">
@@ -116,7 +175,7 @@
         <div class="column is-four-fifths">
           <div class="publication-video">
             <video controls autoplay muted loop playsinline style="width: 100%;">
-              <source src="./static/images/SPARK_video.mov" type="video/mp4">
+              <source src="./static/video.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -191,367 +250,160 @@
                     Input
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/gt/1_global/real-test_d415_000000000_color.png" alt="Input">
                   Ground Truth
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/depth4tom/1_global/real-test_d415_000000000_color.png" alt="Input">
                   Depth4ToM
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/modest/1_global/real-test_d415_000000000_color.png" alt="Input">
                   MODEST
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/diffusion4robustdepth/1_global/real-test_d415_000000000_color.png" alt="Input">
                   D4RD  
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/dkt/1_global/real-test_d415_000000000_color.png" alt="Input">
                   DKT
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/marigold/1_global/real-test_d415_000000000_color.png" alt="Input">
                   Marigold
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/genpercept/1_global/real-test_d415_000000000_color.png" alt="Input">
                   GenPercept
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/geowizard/1_global/real-test_d415_000000000_color.png" alt="Input">
                   GeoWizard
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/da3/1_global/real-test_d415_000000000_color.png" alt="Input">
                   DA3
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/moge2/1_global/real-test_d415_000000000_color.png" alt="Input">
                   MoGe-2
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000000.jpg" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/ours+moge2/1_global/real-test_d415_000000000_color.png" alt="Input">
                   Ours
                 </div>
             </div>
-        </div>
-    </div>
-  </section>
 
-  <!-- Image Slider Section -->
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">🔄 Before & After: Transparent to Opaque 🔄</h2>
-          <p style="text-align: center; margin-bottom: 2rem; color: #666;">
-            Drag the slider left or right to see how our method transforms transparent objects into opaque representations. 
-            Left side shows the transparent input, right side shows our opaque prediction.
-          </p>
-          
-          <div id="image-slider-1" class="image-comparison-container" data-comparison-slider>
-            <div class="comparison-slider">
-              <div class="comparison-slider-after">
-                <img src="./static/images/slider/opaque_1.png" alt="Opaque Output">
+            <!-- Row 2 -->
+            <div class="comparison-row">
+              <div class="comparison-item">
+                  <img src="static/images/comparison/cleargrasp/orig/real-test_d415_000000001.jpg" alt="Input">
+                  Input
               </div>
-
-              <div class="comparison-slider-before">
-                <img src="./static/images/slider/transparent_1.png" alt="Transparent Input">
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/gt/1_global/real-test_d415_000000001_color.png" alt="Input">
+                Ground Truth
               </div>
-
-              <!-- movable divider (updated by JS) -->
-              <div class="comparison-slider-divider" aria-hidden="true"></div>
-
-              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                <div class="comparison-slider-icon">
-                  <span class="comparison-slider-arrow left"></span>
-                  <span class="comparison-slider-arrow right"></span>
-                </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/depth4tom/1_global/real-test_d415_000000001_color.png" alt="Input">
+                Depth4ToM
               </div>
-
-              <!-- persistent labels (not clipped) -->
-              <div class="comparison-label comparison-label-left">Transparent</div>
-              <div class="comparison-label comparison-label-right">Opaque</div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/modest/1_global/real-test_d415_000000001_color.png" alt="Input">
+                MODEST
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/diffusion4robustdepth/1_global/real-test_d415_000000001_color.png" alt="Input">
+                D4RD  
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/dkt/1_global/real-test_d415_000000001_color.png" alt="Input">
+                DKT
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/marigold/1_global/real-test_d415_000000001_color.png" alt="Input">
+                Marigold
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/genpercept/1_global/real-test_d415_000000001_color.png" alt="Input">
+                GenPercept
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/geowizard/1_global/real-test_d415_000000001_color.png" alt="Input">
+                GeoWizard
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/da3/1_global/real-test_d415_000000001_color.png" alt="Input">
+                DA3
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/moge2/1_global/real-test_d415_000000001_color.png" alt="Input">
+                MoGe-2
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/cleargrasp/ours+moge2/1_global/real-test_d415_000000001_color.png" alt="Input">
+                Ours
+              </div>
             </div>
-          </div>
+
+            <!-- Row 3 -->
+            <div class="comparison-row">
+              <div class="comparison-item">
+                  <img src="static/images/comparison/TransPhy3D/orig/0826_0014_00000030.png" alt="Input">
+                  Input
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/gt/1_global/0826_0014_00000030_color.png" alt="Input">
+                Ground Truth
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/depth4tom/1_global/0826_0014_00000030_color.png" alt="Input">
+                Depth4ToM
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/modest/1_global/0826_0014_00000030_color.png" alt="Input">
+                MODEST
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/diffusion4robustdepth/1_global/0826_0014_00000030_color.png" alt="Input">
+                D4RD  
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/dkt/1_global/0826_0014_00000030_color.png" alt="Input">
+                DKT
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/marigold/1_global/0826_0014_00000030_color.png" alt="Input">
+                Marigold
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/genpercept/1_global/0826_0014_00000030_color.png" alt="Input">
+                GenPercept
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/geowizard/1_global/0826_0014_00000030_color.png" alt="Input">
+                GeoWizard
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/da3/1_global/0826_0014_00000030_color.png" alt="Input">
+                DA3
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/moge2/1_global/0826_0014_00000030_color.png" alt="Input">
+                MoGe-2
+              </div>
+              <div class="comparison-item">
+                <img src="static/images/comparison/TransPhy3D/ours+moge2/1_global/0826_0014_00000030_color.png" alt="Input">
+                Ours
+              </div>
+            </div>
         </div>
-      </div>
     </div>
   </section>
 
-  <section class="video-comparison-section">
-    <h2 class="title is-3" style="text-align: center;">♠️ Qualitative Comparison on Shape Reconstruction ♠️</h2>
-    
-      <h3>Microwave</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/7221_microwave/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/7221_microwave/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/7221_microwave/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item" >
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/7221_microwave/OmniPart.gif" class="comparison-image" />
-      </div>
-          <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/7221_microwave/PartCrafter.gif" class="comparison-image" />
-          </div>
-      <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/7221_microwave/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
 
-    <h3>Refrigerator</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/10900_fridge/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/10900_fridge/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/10900_fridge/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item">
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/10900_fridge/OmniPart.gif" class="comparison-image" />
-      </div>
-      <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/10900_fridge/PartCrafter.gif" class="comparison-image" />
-          </div>
-          <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/10900_fridge/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
 
-    <h3>Table</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/25913_desk/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/25913_desk/GT2.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/25913_desk/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item">
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/25913_desk/OmniPart.gif" class="comparison-image" />
-      </div>
-          <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/25913_desk/PartCrafter.gif" class="comparison-image" />
-          </div>
-      <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/25913_desk/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
-
-    <h3>Storage Furniture</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/35059_drawer/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/35059_drawer/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/35059_drawer/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item">
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/35059_drawer/OmniPart.gif" class="comparison-image" />
-      </div>
-          <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/35059_drawer/PartCrafter.gif" class="comparison-image" />
-          </div>
-      <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/35059_drawer/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
-
-    <h3>Safe</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/102301_safe/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/102301_safe/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/102301_safe/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item">
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/102301_safe/OmniPart.gif" class="comparison-image" />
-      </div>
-          <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/102301_safe/PartCrafter.gif" class="comparison-image" />
-          </div>
-      <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/102301_safe/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
-
-    <h3>Washing Machine</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/mesh/103521_washer/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/mesh/103521_washer/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/mesh/103521_washer/SPARK.gif" class="comparison-image" />
-          </div>
-      <div class="video-item">
-        <h4>OmniPart</h4>
-        <img src="./static/mesh/103521_washer/OmniPart.gif" class="comparison-image" />
-      </div>
-          <div class="video-item">
-              <h4>PartCrafter</h4>
-              <img src="./static/mesh/103521_washer/PartCrafter.gif" class="comparison-image" />
-          </div>
-      <div class="video-item ">
-              <h4>URDFormer</h4>
-              <img src="./static/mesh/103521_washer/URDFormer.gif" class="comparison-image" />
-          </div>
-      </div>
-  </section>
-
-  <section class="video-comparison-section">
-    <h2 class="title is-3" ">♣️ Qualitative Comparison on URDF Estimation ♣️</h2>
-    <p>
-      We compare our results with Articulate-Anything, Articulate-AnyMesh.
-      The closed-state results are reconstructed or retrieved meshes, while the open-state configurations are obtained through kinematic transformations using the estimated URDF parameters.
-      Our method achieves more accurate and physically consistent URDF estimation, leading to realistic articulation behavior.
-    </p>
-      <h3>Microwave</h3>
-      <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/URDF/7236_microwave/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/URDF/7236_microwave/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/URDF/7236_microwave/SPARK_blender.gif" class="comparison-image" />
-          </div>
-      <div class="video-item" >
-        <h4>Articulate-Anything</h4>
-        <img src="./static/URDF/7236_microwave/Anything.gif" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Articulate AnyMesh</h4>
-              <img src="./static/URDF/7236_microwave/AnyMesh.gif" class="comparison-image" />
-          </div>
-      </div>
-    <h3>Refrigerator</h3>
-    <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/URDF/10627_refrigerator/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/URDF/10627_refrigerator/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/URDF/10627_refrigerator/SPARK_blender.gif" class="comparison-image" />
-          </div>
-      <div class="video-item" >
-        <h4>Articulate-Anything</h4>
-        <img src="./static/URDF/10627_refrigerator/Anything.gif" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Articulate AnyMesh</h4>
-              <img src="./static/URDF/10627_refrigerator/AnyMesh.gif" class="comparison-image" />
-          </div>
-      </div>
-    <h3>Table</h3>
-    <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/URDF/20411_table/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/URDF/20411_table/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/URDF/20411_table/SPARK_blender.gif" class="comparison-image" />
-          </div>
-      <div class="video-item" >
-        <h4>Articulate-Anything</h4>
-        <img src="./static/URDF/20411_table/Anything.gif" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Articulate AnyMesh</h4>
-              <img src="./static/URDF/20411_table/AnyMesh.gif" class="comparison-image" />
-          </div>
-      </div>
-    <h3>Storage Furniture</h3>
-    <div class="video-container">
-          <div class="video-item">
-        <h4>Input Image</h4>
-        <img src="./static/URDF/44817_storagefurniture/input_image.png" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Ground Truth</h4>
-              <img src="./static/URDF/44817_storagefurniture/GT.gif" class="comparison-image" />
-          </div>
-          <div class="video-item emphasized">
-              <h4>Ours</h4>
-              <img src="./static/URDF/44817_storagefurniture/SPARK_blender.gif" class="comparison-image" />
-          </div>
-      <div class="video-item" >
-        <h4>Articulate-Anything</h4>
-        <img src="./static/URDF/44817_storagefurniture/Anything.gif" class="comparison-image" />
-      </div>
-          <div class="video-item ">
-              <h4>Articulate AnyMesh</h4>
-              <img src="./static/URDF/44817_storagefurniture/AnyMesh.gif" class="comparison-image" />
-          </div>
-      </div>
-  </section>
 
 <style>
   /* Teaser image responsive styling */
@@ -806,11 +658,15 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
-      align-items: start;
+      align-items: center;
   }
 
   .media-container {
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
   }
 
   .media-container img,
@@ -840,12 +696,22 @@
       }
   }
 
+  /* Slider Grid Layout */
+  .slider-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+  }
+
   /* Image Comparison Slider Styles */
   .image-comparison-container {
       position: relative;
       width: 100%;
-      margin: 2rem auto;
-      max-width: 700px;
+      margin: 0 auto;
+      max-width: 400px;
   }
 
   .comparison-slider {
@@ -867,7 +733,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain; /* keep full image visible without cropping */
+      object-fit: cover; /* crop image to fill square container */
       user-select: none;
       pointer-events: none;
     }
@@ -906,11 +772,11 @@
         }
   .comparison-slider-label {
       position: absolute;
-      bottom: 15px;
-      padding: 6px 12px;
+      bottom: 10px;
+      padding: 5px 10px;
       background: rgba(139, 140, 192, 0.85);
       color: white;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 600;
       border-radius: 4px;
       pointer-events: none;
@@ -943,8 +809,8 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 60px;
-      height: 60px;
+      width: 45px;
+      height: 45px;
       transform: translate(-50%, -50%); /* center the handle on its left coordinate */
       background: white;
       border: 3px solid #8b8cc0;
@@ -998,7 +864,17 @@
 
   /* (pseudo-element removed — using .comparison-slider-divider element instead) */
 
+  @media (max-width: 1024px) {
+      .slider-grid {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
   @media (max-width: 768px) {
+      .slider-grid {
+          grid-template-columns: 1fr;
+      }
+
       .image-comparison-container {
           max-width: 100%;
       }
@@ -1020,23 +896,43 @@
 
 <script>
   const galleryData = [
+    // Widest images (aspect ratio > 1.75)
+    {"name":"3","input":"3_input.jpg","moge2":"3_moge2.png","ours":"3_ours.png"},
     {"name":"1","input":"1_input.jpg","moge2":"1_moge2.png","ours":"1_ours.png"},
     {"name":"2","input":"2_input.jpg","moge2":"2_moge2.png","ours":"2_ours.png"},
-    {"name":"3","input":"3_input.jpg","moge2":"3_moge2.png","ours":"3_ours.png"},
     {"name":"4","input":"4_input.jpg","moge2":"4_moge2.png","ours":"4_ours.png"},
     {"name":"5","input":"5_input.jpg","moge2":"5_moge2.png","ours":"5_ours.png"},
-    {"name":"7","input":"7_input.jpg","moge2":"7_moge2.png","ours":"7_ours.png"},
+    {"name":"18","input":"18_input.png","moge2":"18_moge2.png","ours":"18_ours.png"},
+    // Medium-wide images (aspect ratio 1.4-1.5)
+    {"name":"17","input":"17_input.jpg","moge2":"17_moge2.png","ours":"17_ours.png"},
+    // Standard landscape images (aspect ratio ~1.33)
+    {"name":"10","input":"10_input.jpg","moge2":"10_moge2.png","ours":"10_ours.png"},
+    {"name":"12","input":"12_input.jpg","moge2":"12_moge2.png","ours":"12_ours.png"},
+    {"name":"15","input":"15_input.jpg","moge2":"15_moge2.png","ours":"15_ours.png"},
     {"name":"8","input":"8_input.jpg","moge2":"8_moge2.png","ours":"8_ours.png"},
     {"name":"9","input":"9_input.jpg","moge2":"9_moge2.png","ours":"9_ours.png"},
-    {"name":"10","input":"10_input.jpg","moge2":"10_moge2.png","ours":"10_ours.png"},
     {"name":"11","input":"11_input.jpg","moge2":"11_moge2.png","ours":"11_ours.png"},
-    {"name":"12","input":"12_input.jpg","moge2":"12_moge2.png","ours":"12_ours.png"},
     {"name":"13","input":"13_input.jpg","moge2":"13_moge2.png","ours":"13_ours.png"},
     {"name":"14","input":"14_input.jpg","moge2":"14_moge2.png","ours":"14_ours.png"},
-    {"name":"15","input":"15_input.jpg","moge2":"15_moge2.png","ours":"15_ours.png"},
+    {"name":"22","input":"22_input.jpg","moge2":"22_moge2.png","ours":"22_ours.png"},
+    {"name":"25","input":"25_input.jpg","moge2":"25_moge2.png","ours":"25_ours.png"},
+    {"name":"29","input":"29_input.jpg","moge2":"29_moge2.png","ours":"29_ours.png"},
+    {"name":"32","input":"32_input.jpg","moge2":"32_moge2.png","ours":"32_ours.png"},
+    {"name":"7","input":"7_input.jpg","moge2":"7_moge2.png","ours":"7_ours.png"},
+    // Square image (aspect ratio 1.0)
     {"name":"16","input":"16_input.png","moge2":"16_moge2.png","ours":"16_ours.png"},
-    {"name":"17","input":"17_input.jpg","moge2":"17_moge2.png","ours":"17_ours.png"},
-    {"name":"18","input":"18_input.png","moge2":"18_moge2.png","ours":"18_ours.png"}
+    // Portrait images (aspect ratio 0.75)
+    {"name":"20","input":"20_input.jpg","moge2":"20_moge2.png","ours":"20_ours.png"},
+    {"name":"21","input":"21_input.jpg","moge2":"21_moge2.png","ours":"21_ours.png"},
+    {"name":"23","input":"23_input.jpg","moge2":"23_moge2.png","ours":"23_ours.png"},
+    {"name":"24","input":"24_input.jpg","moge2":"24_moge2.png","ours":"24_ours.png"},
+    {"name":"26","input":"26_input.jpg","moge2":"26_moge2.png","ours":"26_ours.png"},
+    {"name":"27","input":"27_input.jpg","moge2":"27_moge2.png","ours":"27_ours.png"},
+    {"name":"28","input":"28_input.jpg","moge2":"28_moge2.png","ours":"28_ours.png"},
+    {"name":"30","input":"30_input.jpg","moge2":"30_moge2.png","ours":"30_ours.png"},
+    {"name":"31","input":"31_input.jpg","moge2":"31_moge2.png","ours":"31_ours.png"},
+    // Tallest portrait image (aspect ratio 0.56)
+    {"name":"19","input":"19_input.jpg","moge2":"19_moge2.png","ours":"19_ours.png"}
   ];
 
   async function loadGallery() {
