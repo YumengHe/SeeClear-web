@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="a novel framework that integrates VLM-guided part-level and global image guidance with diffusion transformers to produce high-quality articulated object reconstructions.">
-  <meta name="keywords" content="SPARK, 3D Reconstruction, 3D Generation, Articulated Object Reconstruction">
+  <meta name="description" content="SeeClear is a novel framework that converts transparent objects into genera-tive opaque images, predicting stable and accurate depth for transparent objects.">
+  <meta name="keywords" content="SeeClear, SeeClear-396k, Monocular Depth Estimation, Transparent Objects">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPARK</title>
+  <title>SeeClear</title>
 
   <link rel="stylesheet" href="./static/css/google-fonts-local.css">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -14,10 +14,10 @@
   <link rel="stylesheet" href="./static/css/index.css">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./static/css/font-awesome.min.css">
 
   <!-- Academicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/academicons.min.css">
 
   <link rel="icon" href="./static/images/icon.png">
 
@@ -38,8 +38,102 @@
             <!-- Authors -->
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                Anonymous
+                Xiaoying Wang<sup>1*</sup>,
               </span>
+              <span class="author-block">
+                <a href="https://heyumeng.com/">Yumeng He</a><sup>1,2*</sup>,
+              </span>
+              <span class="author-block">
+                Jingkai Shi<sup>1,2*</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://jlu227.wixsite.com/kay-lu">Jiayin Lu</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://yangzzzy.github.io/">Yin Yang</a><sup>3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://yingjiang96.github.io/">Ying Jiang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://www.math.ucla.edu/~cffjiang/">Chenfanfu Jiang</a><sup>1</sup>
+              </span>
+            </div>
+
+            <!-- Affiliations -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>University of California, Los Angeles</span> &nbsp;
+              <span class="author-block"><sup>2</sup>University of Southern California</span> &nbsp;
+              <span class="author-block"><sup>3</sup>University of Utah</span>
+            </div>
+
+            <!-- Author Notes -->
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><i>* equal contributions</i></span>
+            </div>
+
+            <!-- Links -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+
+                <!-- OpenReview Link -->
+                <!-- <span class="link-block">
+                  <a href="https://openreview.net/forum?id="
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                    <span>OpenReview</span>
+                  </a>
+                </span> &nbsp; -->
+                
+                <!-- ArXiv Link -->
+                <span class="link-block">
+                  <a href="" 
+                    class="external-link button is-normal is-rounded is-dark"
+                    target="_blank" rel="noopener noreferrer">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv (Coming Soon)</span>
+                  </a>
+                </span> &nbsp;
+
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code (Coming Soon)</span>
+                  </a>
+                </span> &nbsp;
+
+                <!-- Video Link -->
+                <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=ZaZHbkkPtXY"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i> 
+                  </span>
+                  <span>Video</span>
+                </a>
+                </span> &nbsp; -->
+
+                <!-- Model Link -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/wgsxm/PartCrafter"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Model</span>
+                  </a>
+                </span> &nbsp; -->
+
+                <!-- Demo Link -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/alexnasa/PartCrafter"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-magic"></i></span>
+                    <span>Demo</span>
+                  </a>
+                </span> -->
+
+              </div>
             </div>
           </div>
         </div>
@@ -51,9 +145,6 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/teaser.mp4" type="video/mp4">
-        </video> -->
         <img src="./static/images/teaser.png" class="interpolation-image" />
         <h2 class="subtitle has-text-centered">
           <strong>SeeClear</strong> is a novel framework that converts transparent objects into generative opaque images, predicting stable and accurate depth for transparent objects.
@@ -70,17 +161,37 @@
           <!-- Slider 1 -->
           <div id="image-slider-1" class="image-comparison-container" data-comparison-slider>
             <div class="comparison-slider">
-              <div class="comparison-slider-before">
+              <!-- Top layer: Input/Transparent -->
+              <div class="comparison-slider-top">
                 <img src="./static/images/in_the_wild/27_input.jpg" alt="Transparent Input">
               </div>
-              <div class="comparison-slider-after">
+
+              <!-- Middle layer: Result/Opaque -->
+              <div class="comparison-slider-middle">
                 <img src="./static/images/in_the_wild/27_result.png" alt="Opaque Output">
               </div>
 
-              <!-- movable divider (updated by JS) -->
-              <div class="comparison-slider-divider" aria-hidden="true"></div>
+              <!-- Bottom layer: Depth -->
+              <div class="comparison-slider-depth">
+                <img src="./static/images/in_the_wild/27_ours.png" alt="Depth">
+              </div>
 
-              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <!-- Divider 1: Left slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-1" aria-hidden="true"></div>
+
+              <!-- Divider 2: Right slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-2" aria-hidden="true"></div>
+
+              <!-- Handle 1: Left slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-1" role="slider" aria-label="Left image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" data-slider-id="1">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- Handle 2: Right slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-2" role="slider" aria-label="Right image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66" data-slider-id="2">
                 <div class="comparison-slider-icon">
                   <span class="comparison-slider-arrow left"></span>
                   <span class="comparison-slider-arrow right"></span>
@@ -89,25 +200,45 @@
 
               <!-- persistent labels (not clipped) -->
               <div class="comparison-label comparison-label-left">Transparent</div>
-              <div class="comparison-label comparison-label-right">Opaque</div>
+              <div class="comparison-label comparison-label-middle">Opaque</div>
+              <div class="comparison-label comparison-label-right">Depth</div>
             </div>
           </div>
 
           <!-- Slider 2 -->
           <div id="image-slider-2" class="image-comparison-container" data-comparison-slider>
             <div class="comparison-slider">
-              <div class="comparison-slider-after">
-                <img src="./static/images/in_the_wild/28_result.png" alt="Opaque Output">
-              </div>
-
-              <div class="comparison-slider-before">
+              <!-- Top layer: Input/Transparent -->
+              <div class="comparison-slider-top">
                 <img src="./static/images/in_the_wild/28_input.jpg" alt="Transparent Input">
               </div>
 
-              <!-- movable divider (updated by JS) -->
-              <div class="comparison-slider-divider" aria-hidden="true"></div>
+              <!-- Middle layer: Result/Opaque -->
+              <div class="comparison-slider-middle">
+                <img src="./static/images/in_the_wild/28_result.png" alt="Opaque Output">
+              </div>
 
-              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <!-- Bottom layer: Depth -->
+              <div class="comparison-slider-depth">
+                <img src="./static/images/in_the_wild/28_ours.png" alt="Depth">
+              </div>
+
+              <!-- Divider 1: Left slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-1" aria-hidden="true"></div>
+
+              <!-- Divider 2: Right slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-2" aria-hidden="true"></div>
+
+              <!-- Handle 1: Left slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-1" role="slider" aria-label="Left image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" data-slider-id="1">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- Handle 2: Right slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-2" role="slider" aria-label="Right image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66" data-slider-id="2">
                 <div class="comparison-slider-icon">
                   <span class="comparison-slider-arrow left"></span>
                   <span class="comparison-slider-arrow right"></span>
@@ -116,25 +247,45 @@
 
               <!-- persistent labels (not clipped) -->
               <div class="comparison-label comparison-label-left">Transparent</div>
-              <div class="comparison-label comparison-label-right">Opaque</div>
+              <div class="comparison-label comparison-label-middle">Opaque</div>
+              <div class="comparison-label comparison-label-right">Depth</div>
             </div>
           </div>
 
           <!-- Slider 3 -->
           <div id="image-slider-3" class="image-comparison-container" data-comparison-slider>
             <div class="comparison-slider">
-              <div class="comparison-slider-after">
-                <img src="./static/images/in_the_wild/21_result.jpg" alt="Opaque Output">
+              <!-- Top layer: Input/Transparent -->
+              <div class="comparison-slider-top">
+                <img src="./static/images/in_the_wild/15_input.jpg" alt="Transparent Input">
               </div>
 
-              <div class="comparison-slider-before">
-                <img src="./static/images/in_the_wild/21_input.jpg" alt="Transparent Input">
+              <!-- Middle layer: Result/Opaque -->
+              <div class="comparison-slider-middle">
+                <img src="./static/images/in_the_wild/15_result.png" alt="Opaque Output">
               </div>
 
-              <!-- movable divider (updated by JS) -->
-              <div class="comparison-slider-divider" aria-hidden="true"></div>
+              <!-- Bottom layer: Depth -->
+              <div class="comparison-slider-depth">
+                <img src="./static/images/in_the_wild/15_ours.png" alt="Depth">
+              </div>
 
-              <div class="comparison-slider-handle" role="slider" aria-label="Image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+              <!-- Divider 1: Left slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-1" aria-hidden="true"></div>
+
+              <!-- Divider 2: Right slider -->
+              <div class="comparison-slider-divider comparison-slider-divider-2" aria-hidden="true"></div>
+
+              <!-- Handle 1: Left slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-1" role="slider" aria-label="Left image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="33" data-slider-id="1">
+                <div class="comparison-slider-icon">
+                  <span class="comparison-slider-arrow left"></span>
+                  <span class="comparison-slider-arrow right"></span>
+                </div>
+              </div>
+
+              <!-- Handle 2: Right slider -->
+              <div class="comparison-slider-handle comparison-slider-handle-2" role="slider" aria-label="Right image comparison slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66" data-slider-id="2">
                 <div class="comparison-slider-icon">
                   <span class="comparison-slider-arrow left"></span>
                   <span class="comparison-slider-arrow right"></span>
@@ -143,7 +294,8 @@
 
               <!-- persistent labels (not clipped) -->
               <div class="comparison-label comparison-label-left">Transparent</div>
-              <div class="comparison-label comparison-label-right">Opaque</div>
+              <div class="comparison-label comparison-label-middle">Opaque</div>
+              <div class="comparison-label comparison-label-right">Depth</div>
             </div>
           </div>
         </div>
@@ -175,7 +327,7 @@
         <div class="column is-four-fifths">
           <div class="publication-video">
             <video controls autoplay muted loop playsinline style="width: 100%;">
-              <source src="./static/video.mp4" type="video/mp4">
+              <source src="./video.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -266,7 +418,7 @@
                   D4RD  
                 </div>
                 <div class="comparison-item">
-                  <img src="static/images/comparison/cleargrasp/dkt/1_global/real-test_d415_000000000_color.png" alt="Input">
+                  <img src="static/images/comparison/cleargrasp/dkt/dkt cleargrasp/real-test_d415_000000000__dkt_color.png" alt="Input">
                   DKT
                 </div>
                 <div class="comparison-item">
@@ -318,7 +470,7 @@
                 D4RD  
               </div>
               <div class="comparison-item">
-                <img src="static/images/comparison/cleargrasp/dkt/1_global/real-test_d415_000000001_color.png" alt="Input">
+                <img src="static/images/comparison/cleargrasp/dkt/dkt cleargrasp/real-test_d415_000000001__dkt_color.png" alt="Input">
                 DKT
               </div>
               <div class="comparison-item">
@@ -370,7 +522,7 @@
                 D4RD  
               </div>
               <div class="comparison-item">
-                <img src="static/images/comparison/TransPhy3D/dkt/1_global/0826_0014_00000030_color.png" alt="Input">
+                <img src="static/images/comparison/TransPhy3D/dkt/dkt transphy/0826_0014_00000030__dkt_color.png" alt="Input">
                 DKT
               </div>
               <div class="comparison-item">
@@ -402,10 +554,107 @@
     </div>
   </section>
 
+  <!-- TDoF20 Comparison Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title is-3" style="text-align:center;">🔷 TDoF20 Comparison 🔷</h2>
+      <p style="text-align:center; margin-bottom: 2rem;">Comparison on TDoF20 dataset. Rows show Input, Ground Truth, DKT, and Ours. Each column is a different scene.</p>
 
+      <div class="tdof-grid-new">
+        <!-- Row 1: Input -->
+        <div class="tdof-label">Input</div>
+        <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_rgb.jpg" alt="Input">
+
+        <!-- Row 2: Ground Truth -->
+        <div class="tdof-label">Ground Truth</div>
+        <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_gt_depth_color.png" alt="Ground Truth">
+
+        <!-- Row 3: DKT -->
+        <div class="tdof-label">DKT</div>
+        <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_dkt_depth_color.png" alt="DKT">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_dkt_depth_color.png" alt="DKT">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_dkt_depth_color.png" alt="DKT">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_dkt_depth_color.png" alt="DKT">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_dkt_depth_color.png" alt="DKT">
+
+        <!-- Row 4: Ours -->
+        <div class="tdof-label">Ours</div>
+        <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_our_depth_color.png" alt="Ours">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_our_depth_color.png" alt="Ours">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_our_depth_color.png" alt="Ours">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_our_depth_color.png" alt="Ours">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_our_depth_color.png" alt="Ours">
+      </div>
+    </div>
+  </section>
 
 
 <style>
+    /* TDoF20 new layout: label column + 5 scene columns */
+    .tdof-grid-new {
+      display: grid;
+      grid-template-columns: auto repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 1.5rem;
+      align-items: center;
+  }
+
+  .tdof-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      text-align: center;
+      padding: 12px;
+      background: rgba(139, 140, 192, 0.1);
+      border-radius: 6px;
+      box-sizing: border-box;
+  }
+
+  .tdof-grid-new img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  @media (max-width: 1200px) {
+      .tdof-grid-new {
+          grid-template-columns: auto repeat(3, 1fr);
+      }
+      /* Hide columns 5 and 6 (images only, not labels) */
+      .tdof-grid-new img:nth-child(6n+5),
+      .tdof-grid-new img:nth-child(6n+6) {
+          display: none;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .tdof-grid-new {
+          grid-template-columns: auto repeat(2, 1fr);
+      }
+      /* Hide columns 4, 5, and 6 (images only, not labels) */
+      .tdof-grid-new img:nth-child(6n+4),
+      .tdof-grid-new img:nth-child(6n+5),
+      .tdof-grid-new img:nth-child(6n+6) {
+          display: none;
+      }
+      .tdof-label {
+          font-size: 12px;
+          padding: 8px;
+      }
+  }
   /* Teaser image responsive styling */
   .interpolation-image {
       max-width: 100%;
@@ -758,6 +1007,100 @@
       pointer-events: none;
     }
 
+    /* Three-layer structure for 3-image slider */
+    .comparison-slider-top,
+    .comparison-slider-middle,
+    .comparison-slider-depth {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .comparison-slider-top img,
+    .comparison-slider-middle img,
+    .comparison-slider-depth img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .comparison-slider-top {
+      z-index: 3;
+    }
+
+    .comparison-slider-middle {
+      z-index: 2;
+    }
+
+    .comparison-slider-depth {
+      z-index: 1;
+    }
+
+    /* Dividers for two sliders */
+    .comparison-slider-divider-1,
+    .comparison-slider-divider-2 {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: rgba(139, 140, 192, 0.6);
+      z-index: 8;
+      pointer-events: none;
+    }
+
+    /* Handles for two sliders */
+    .comparison-slider-handle-1,
+    .comparison-slider-handle-2 {
+      position: absolute;
+      top: 50%;
+      width: 45px;
+      height: 45px;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 3px solid #8b8cc0;
+      border-radius: 50%;
+      cursor: grab;
+      z-index: 10;
+      box-shadow: 0 4px 12px rgba(139, 140, 192, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .comparison-slider-handle-1:hover,
+    .comparison-slider-handle-2:hover {
+      box-shadow: 0 6px 20px rgba(139, 140, 192, 0.6);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Middle label positioning */
+    .comparison-label-middle {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 8px;
+      background: rgba(139, 140, 192, 0.85);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      border-radius: 4px;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      backdrop-filter: blur(4px);
+      z-index: 12;
+    }
+
         /* Divider element (moved dynamically by JS) */
         .comparison-slider-divider {
           position: absolute;
@@ -789,10 +1132,10 @@
       .comparison-label {
       position: absolute;
       bottom: 15px;
-      padding: 6px 12px;
+      padding: 4px 8px;
       background: rgba(139, 140, 192, 0.85);
       color: white;
-      font-size: 13px;
+      font-size: 10px;
       font-weight: 600;
       border-radius: 4px;
       pointer-events: none;
@@ -802,8 +1145,9 @@
         z-index: 12; /* keep labels above handle and divider */
     }
 
-    .comparison-label-left { left: 15px; }
-    .comparison-label-right { right: 15px; }
+    /* Label positions will be dynamically set by JavaScript */
+    .comparison-label-left { }
+    .comparison-label-right { }
 
   .comparison-slider-handle {
       position: absolute;
@@ -902,7 +1246,7 @@
     {"name":"2","input":"2_input.jpg","moge2":"2_moge2.png","ours":"2_ours.png"},
     {"name":"4","input":"4_input.jpg","moge2":"4_moge2.png","ours":"4_ours.png"},
     {"name":"5","input":"5_input.jpg","moge2":"5_moge2.png","ours":"5_ours.png"},
-    {"name":"18","input":"18_input.png","moge2":"18_moge2.png","ours":"18_ours.png"},
+    // {"name":"18","input":"18_input.png","moge2":"18_moge2.png","ours":"18_ours.png"},
     // Medium-wide images (aspect ratio 1.4-1.5)
     {"name":"17","input":"17_input.jpg","moge2":"17_moge2.png","ours":"17_ours.png"},
     // Standard landscape images (aspect ratio ~1.33)
@@ -915,8 +1259,8 @@
     {"name":"13","input":"13_input.jpg","moge2":"13_moge2.png","ours":"13_ours.png"},
     {"name":"14","input":"14_input.jpg","moge2":"14_moge2.png","ours":"14_ours.png"},
     {"name":"22","input":"22_input.jpg","moge2":"22_moge2.png","ours":"22_ours.png"},
-    {"name":"25","input":"25_input.jpg","moge2":"25_moge2.png","ours":"25_ours.png"},
-    {"name":"29","input":"29_input.jpg","moge2":"29_moge2.png","ours":"29_ours.png"},
+    // {"name":"25","input":"25_input.jpg","moge2":"25_moge2.png","ours":"25_ours.png"},
+    // {"name":"29","input":"29_input.jpg","moge2":"29_moge2.png","ours":"29_ours.png"},
     {"name":"32","input":"32_input.jpg","moge2":"32_moge2.png","ours":"32_ours.png"},
     {"name":"7","input":"7_input.jpg","moge2":"7_moge2.png","ours":"7_ours.png"},
     // Square image (aspect ratio 1.0)
@@ -924,10 +1268,10 @@
     // Portrait images (aspect ratio 0.75)
     {"name":"20","input":"20_input.jpg","moge2":"20_moge2.png","ours":"20_ours.png"},
     {"name":"21","input":"21_input.jpg","moge2":"21_moge2.png","ours":"21_ours.png"},
-    {"name":"23","input":"23_input.jpg","moge2":"23_moge2.png","ours":"23_ours.png"},
+    // {"name":"23","input":"23_input.jpg","moge2":"23_moge2.png","ours":"23_ours.png"},
     {"name":"24","input":"24_input.jpg","moge2":"24_moge2.png","ours":"24_ours.png"},
     {"name":"26","input":"26_input.jpg","moge2":"26_moge2.png","ours":"26_ours.png"},
-    {"name":"27","input":"27_input.jpg","moge2":"27_moge2.png","ours":"27_ours.png"},
+    // {"name":"27","input":"27_input.jpg","moge2":"27_moge2.png","ours":"27_ours.png"},
     {"name":"28","input":"28_input.jpg","moge2":"28_moge2.png","ours":"28_ours.png"},
     {"name":"30","input":"30_input.jpg","moge2":"30_moge2.png","ours":"30_ours.png"},
     {"name":"31","input":"31_input.jpg","moge2":"31_moge2.png","ours":"31_ours.png"},
