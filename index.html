@@ -34,6 +34,12 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">SeeClear: Reliable Transparent Object Depth Estimation via Generative Opacification</h1>
+            
+            <!-- Publication -->
+            <div class="is-size-5 publication-info">
+              <b>European Conference on Computer Vision (ECCV) 2026</b>
+            </div>
+            <br>
 
             <!-- Authors -->
             <div class="is-size-5 publication-authors">
@@ -97,10 +103,10 @@
 
                 <!-- Code Link -->
                 <span class="link-block">
-                  <a href=""
+                  <a href="https://github.com/YumengHe/SeeClear"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Code (Coming Soon)</span>
+                    <span>Code</span>
                   </a>
                 </span> &nbsp;
 
@@ -566,39 +572,45 @@
   <section class="section">
     <div class="container">
       <h2 class="title is-3" style="text-align:center;">🔷 TDoF20 Comparison 🔷</h2>
-      <p style="text-align:center; margin-bottom: 2rem;">Comparison on TDoF20 dataset. Rows show Input, Ground Truth, DKT, and Ours. Each column is a different scene.</p>
+      <p style="text-align:center; margin-bottom: 2rem;">Comparison on TDoF20 dataset. Each row is a different scene. Columns show Input, Ground Truth, DKT, and Ours.</p>
+
+      <!-- Header Row -->
+      <div class="tdof-header">
+        <div class="tdof-header-label">Input</div>
+        <div class="tdof-header-label">Ground Truth</div>
+        <div class="tdof-header-label">DKT</div>
+        <div class="tdof-header-label">Ours</div>
+      </div>
 
       <div class="tdof-grid-new">
-        <!-- Row 1: Input -->
-        <div class="tdof-label">Input</div>
+        <!-- Scene 1: cube_166_1461 -->
         <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_rgb.jpg" alt="Input">
-        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_rgb.jpg" alt="Input">
-        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_rgb.jpg" alt="Input">
-        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_rgb.jpg" alt="Input">
-        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_rgb.jpg" alt="Input">
-
-        <!-- Row 2: Ground Truth -->
-        <div class="tdof-label">Ground Truth</div>
         <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_gt_depth_color.png" alt="Ground Truth">
-        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_gt_depth_color.png" alt="Ground Truth">
-        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_gt_depth_color.png" alt="Ground Truth">
-        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_gt_depth_color.png" alt="Ground Truth">
-        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_gt_depth_color.png" alt="Ground Truth">
-
-        <!-- Row 3: DKT -->
-        <div class="tdof-label">DKT</div>
         <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_dkt_depth_color.png" alt="DKT">
-        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_dkt_depth_color.png" alt="DKT">
-        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_dkt_depth_color.png" alt="DKT">
-        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_dkt_depth_color.png" alt="DKT">
-        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_dkt_depth_color.png" alt="DKT">
-
-        <!-- Row 4: Ours -->
-        <div class="tdof-label">Ours</div>
         <img src="static/images/comparison/TDoF20/cube_166_1461/cube_166_1461_our_depth_color.png" alt="Ours">
+
+        <!-- Scene 2: cube_216_1321 -->
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_dkt_depth_color.png" alt="DKT">
         <img src="static/images/comparison/TDoF20/cube_216_1321/cube_216_1321_our_depth_color.png" alt="Ours">
+
+        <!-- Scene 3: cuboid_330_1509 -->
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_dkt_depth_color.png" alt="DKT">
         <img src="static/images/comparison/TDoF20/cuboid_330_1509/cuboid_330_1509_our_depth_color.png" alt="Ours">
+
+        <!-- Scene 4: handle_cup_440_1514 -->
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_dkt_depth_color.png" alt="DKT">
         <img src="static/images/comparison/TDoF20/handle_cup_440_1514/handle_cup_440_1514_our_depth_color.png" alt="Ours">
+
+        <!-- Scene 5: juice_cup_340_1588 -->
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_rgb.jpg" alt="Input">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_gt_depth_color.png" alt="Ground Truth">
+        <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_dkt_depth_color.png" alt="DKT">
         <img src="static/images/comparison/TDoF20/juice_cup_340_1588/juice_cup_340_1588_our_depth_color.png" alt="Ours">
       </div>
     </div>
@@ -606,27 +618,31 @@
 
 
 <style>
-    /* TDoF20 new layout: label column + 5 scene columns */
-    .tdof-grid-new {
+    /* TDoF20 header row */
+    .tdof-header {
       display: grid;
-      grid-template-columns: auto repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
+      padding: 15px 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      color: #333;
       margin-top: 1.5rem;
-      align-items: center;
+      margin-bottom: 12px;
   }
 
-  .tdof-label {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 600;
-      color: #333;
+  .tdof-header-label {
       text-align: center;
-      padding: 12px;
-      background: rgba(139, 140, 192, 0.1);
-      border-radius: 6px;
-      box-sizing: border-box;
+  }
+
+    /* TDoF20 new layout: 4 columns (Input, GT, DKT, Ours) */
+    .tdof-grid-new {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      align-items: center;
   }
 
   .tdof-grid-new img {
@@ -637,30 +653,22 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-  @media (max-width: 1200px) {
-      .tdof-grid-new {
-          grid-template-columns: auto repeat(3, 1fr);
-      }
-      /* Hide columns 5 and 6 (images only, not labels) */
-      .tdof-grid-new img:nth-child(6n+5),
-      .tdof-grid-new img:nth-child(6n+6) {
-          display: none;
-      }
-  }
-
   @media (max-width: 768px) {
-      .tdof-grid-new {
-          grid-template-columns: auto repeat(2, 1fr);
+      .tdof-header {
+          grid-template-columns: repeat(2, 1fr);
+          font-size: 12px;
+          padding: 10px 15px;
       }
-      /* Hide columns 4, 5, and 6 (images only, not labels) */
-      .tdof-grid-new img:nth-child(6n+4),
-      .tdof-grid-new img:nth-child(6n+5),
-      .tdof-grid-new img:nth-child(6n+6) {
+      .tdof-header-label:nth-child(3),
+      .tdof-header-label:nth-child(4) {
           display: none;
       }
-      .tdof-label {
-          font-size: 12px;
-          padding: 8px;
+      .tdof-grid-new {
+          grid-template-columns: repeat(2, 1fr);
+      }
+      .tdof-grid-new img:nth-child(4n+3),
+      .tdof-grid-new img:nth-child(4n+4) {
+          display: none;
       }
   }
   /* Teaser image responsive styling */
